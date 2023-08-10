@@ -1,0 +1,33 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.comment {
+  margin: 0.5rem 0;
+  background-color: #ffffff97;
+  padding: 0.5rem;
+  border-radius: 40px;
+  padding: $mobile-margin;
+  display: inline-flex;
+  flex-direction: column;
+  align-self: flex-start;
+
+  &:nth-child(2n) {
+    align-self: flex-end;
+    .comment__name {
+      text-align: right;
+    }
+  }
+
+  &__name {
+    display: inline-block;
+    color: #303c6c;
+    font-weight: 600;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: 0.5rem 0;
+  }
+
+  
+}

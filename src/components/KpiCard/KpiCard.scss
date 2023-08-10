@@ -1,0 +1,42 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.kpi-card {
+  width: 100%;
+  padding: $mobile-margin;
+
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  @include tablet {
+    width: 30rem;
+    padding: $tablet-desktop-margin;
+  }
+  &__graph {
+    width: 100%;
+  }
+}
+
+.kpi-requests {
+margin-top: $mobile-margin;
+  &__title {
+    padding: $mobile-margin;
+    @include body-font;
+    border: 2px solid #afafaf;
+    border-radius: 0.25rem;
+    
+
+  }
+    &__link {
+        text-decoration: none;
+    }
+  &__subtitle {
+    @include flex-justify(space-between);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: #303c6c;
+
+  }
+}
+
+// &__date
+// &__rpn
+// &__status

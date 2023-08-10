@@ -1,0 +1,156 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.request-card {
+  width: 100%;
+
+  background-color: #fbe8a64d;
+
+  padding: $mobile-margin;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  border-radius: 0.5rem;
+  margin: $mobile-margin;
+  @include tablet {
+    padding: $tablet-desktop-margin;
+    margin: $tablet-desktop-margin auto;
+  }
+
+  @include desktop {
+    width: 80rem;
+  }
+  &__header {
+    @include flex-justify(space-between);
+  }
+
+  &--high-risk {
+    background-color: #f4976c40;
+  }
+
+  &--low-risk {
+    background-color: #9eebd736;
+  }
+
+  &__title {
+    width: 83%;
+  }
+
+  &__subtitle {
+    @include flex-justify(space-between);
+    width: 80%;
+    @include flex-justify(space-between);
+    margin: $mobile-margin 0;
+    font-weight: 600;
+    color: #303c6c;
+    @include tablet {
+      margin: $tablet-desktop-margin 0;
+    }
+  }
+
+  &__status {
+    @include body-font;
+    color: #303c6c;
+    height: 2.2rem;
+    outline: none;
+    font-family: "Avenir";
+    font-weight: 600;
+    background-color: #ffffff97;
+    padding: 0.5rem 0rem 0.5rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 2px solid #303c6c6b;
+
+    &:focus {
+      background-color: #fff;
+      border: 2px solid #303c6c;
+    }
+  }
+
+  &____status-option {
+    font-weight: 600;
+    background-color: #ffffff97;
+    &:focus {
+      background-color: red;
+    }
+  }
+
+  &__assignment {
+    font-weight: 600;
+    @include flex-justify(space-between);
+    align-items: center;
+    margin-top: $mobile-margin;
+    @include tablet {
+      margin-top: $tablet-desktop-margin;
+    }
+  }
+
+  &__expand-icon {
+    width: 2.5rem;
+  }
+
+  &__comments {
+    @include flex-justify(flex-start);
+    flex-direction: column;
+
+    &--hidden {
+      display: none;
+    }
+  }
+  // &__value {
+  //   font-weight: 400;
+  // }
+}
+.update {
+  @include flex-justify(space-between);
+  align-items: flex-end;
+  margin: $mobile-margin 0;
+  @include tablet {
+    margin: $tablet-desktop-margin 0;
+  }
+  &__input {
+    @include body-font;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    resize: none;
+    height: 7rem;
+    font-family: "Avenir";
+    background-color: rgba(219, 220, 216, 0.161);
+    border: 2px solid #afafaf;
+    outline: none;
+    min-width: 70%;
+    @include tablet {
+      min-width: 80%;
+    }
+
+    &:focus {
+      border: 2px solid #303c6c;
+    }
+    &--invalid {
+      border: 2px solid #6c3030;
+      &:focus {
+        border: 2px solid #6c3030;
+      }
+    }
+  }
+
+  &__submit {
+    padding: 0.5rem 1rem;
+    background-color: #ffffff77;
+    font-weight: 600;
+    margin: 0 0.5rem;
+    color: #303c6c;
+    border-radius: 4px;
+    border: 2px solid #303c6c;
+
+    &:hover {
+      background-color: #303c6c;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+ 
+}

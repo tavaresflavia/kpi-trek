@@ -1,0 +1,40 @@
+ [
+      {
+        "timeStamp": "2023-07-01 08:00:00",
+        "value": 92,
+        "createdBy": "3",
+        "kpiId": 1
+      },
+      {
+        "timeStamp": "2023-07-02 08:00:00",
+        "value": 94,
+        "createdBy": "3",
+        "kpiId": 1
+      },
+      {
+        "timeStamp": "2023-07-01 08:00:00",
+        "value": 3,
+        "createdBy": "3",
+        "kpiId": 2
+      },
+      {
+        "timeStamp": "2023-07-02 08:00:00",
+        "value": 2.5,
+        "createdBy": "3",
+        "kpiId": 2
+      },
+      {
+        "timeStamp": "2023-07-01 08:00:00",
+        "value": 6,
+        "createdBy": "3",
+        "kpiId": 3
+      },
+      {
+        "timeStamp": "2023-07-02 08:00:00",
+        "value": 7,
+        "createdBy": "3",
+        "kpiId": 3
+      }
+    ]
+
+  

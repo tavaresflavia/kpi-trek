@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "name": "Production Efficiency",
+      "description": "Measures the ratio of actual output to expected output in the production line.",
+      "target": 95,
+      "upperLimit": 98,
+      "lowerLimit": 90,
+      "createdBy": "Operations Manager"
+    },
+    {
+      "id": 2,
+      "name": "Defect Rate",
+      "description": "Tracks the percentage of defective products in a production batch.",
+      "target": 2,
+      "upperLimit": 4,
+      "lowerLimit": 0,
+      "createdBy": "Operations Manager"
+    },
+    {
+      "id": 3,
+      "name": "Machine Downtime",
+      "description": "Monitors the total time that production machines are non-operational.",
+      "target": 5,
+      "upperLimit": 8,
+      "lowerLimit": 3,
+      "createdBy": "Operations Manager"
+    }
+  ]
+  
+  
+  
