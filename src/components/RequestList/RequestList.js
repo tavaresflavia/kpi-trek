@@ -1,10 +1,11 @@
 
 import RequestCard from "../RequestCard/RequestCard";
 import requests from '../../data/requests.json'
+import './RequestList.scss'
 
 const RequestList = () => {
     return (
-        <div>
+        <div className = "request-list">
             {requests.map((request) =>{
                 return <RequestCard
                 key = {request.requestId}

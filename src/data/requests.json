@@ -1,334 +1,334 @@
-[
-    {
-      "requestId": 1,
-      "title": "Performance Optimization",
-      "description": "Investigate and enhance production line efficiency",
-      "severity": 10,
-      "occurrence": 10,
-      "detection": 10,
-      "rpn": 1000,
-      "status": "open",
-      "createdBy": "Operations Manager",
-      "issueTo": "Engineering Team",
-      "date": "2023-07-05 10:00:00",
-      "comments": [
-        {
-          "commentId": 1,
-          "timeStamp": "2023-07-05 10:15:00",
-          "content": "Initial investigation started",
-          "createdBy": "Operations Manager",
-          "userName": "John Doe"
-        },
-        {
-          "commentId": 2,
-          "timeStamp": "2023-07-05 11:30:00",
-          "content": "Identified potential bottlenecks",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        },
-        {
-          "commentId": 3,
-          "timeStamp": "2023-07-05 13:45:00",
-          "content": "Gathering data for simulation",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        }
-      ],
-      "kpiId": 1
-    },
-    {
-      "requestId": 2,
-      "title": "Line Optimization",
-      "description": "Optimize production line layout for improved efficiency",
-      "severity": 7,
-      "occurrence":7,
-      "detection": 8,
-      "rpn": 392,
-      "status": "pending",
-      "createdBy": "Operations Manager",
-      "issueTo": "Engineering Team",
-      "date": "2023-07-08 09:30:00",
-      "comments": [
-        {
-          "commentId": 1,
-          "timeStamp": "2023-07-08 10:15:00",
-          "content": "Initial analysis started",
-          "createdBy": "Operations Manager",
-          "userName": "John Doe"
-        },
-        {
-          "commentId": 2,
-          "timeStamp": "2023-07-08 11:30:00",
-          "content": "Identified layout improvement opportunities",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        },
-        {
-          "commentId": 3,
-          "timeStamp": "2023-07-08 13:45:00",
-          "content": "Simulating new layout scenarios",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        }
-      ],
-      "kpiId": 1
-    },
-    {
-      "requestId": 3,
-      "title": "Process Efficiency",
-      "description": "Evaluate and optimize production processes",
-      "severity": 3,
-      "occurrence": 3,
-      "detection": 5,
-      "rpn": 45,
-      "status": "open",
-      "createdBy": "Operations Manager",
-      "issueTo": "Engineering Team",
-      "date": "2023-07-12 11:00:00",
-      "comments": [
-        {
-          "commentId": 1,
-          "timeStamp": "2023-07-12 11:15:00",
-          "content": "Initial process analysis started",
-          "createdBy": "Operations Manager",
-          "userName": "John Doe"
-        },
-        {
-          "commentId": 2,
-          "timeStamp": "2023-07-12 12:30:00",
-          "content": "Identified bottlenecks in current processes",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        },
-        {
-          "commentId": 3,
-          "timeStamp": "2023-07-12 14:45:00",
-          "content": "Exploring process optimization strategies",
-          "createdBy": "Engineering Team",
-          "userName": "Jane Smith"
-        }
-      ],
-      "kpiId": 1
-    },
-    {
-        "requestId": 4,
-        "title": "Quality Analysis",
-        "description": "Analyze and address the recent increase in defects",
-        "severity": 2,
-        "occurrence": 3,
-        "detection": 4,
-        "rpn": 24,
-        "status": "open",
-        "createdBy": "Operations Manager",
-        "issueTo": "Quality Control Team",
-        "date": "2023-07-20 09:30:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-07-20 09:45:00",
-            "content": "Initial data collection for analysis",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-07-20 10:30:00",
-            "content": "Identified potential sources of defects",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-07-20 11:15:00",
-            "content": "Analyzing defect patterns",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          }
-        ],
-        "kpiId": 2
+[{
+  "id": 1,
+  "title": "Improve Production Line Efficiency",
+  "description": "Our packaging process at Production Line 2 has encountered efficiency problems recently, resulting in a 10% increase in packaging time. This issue was noticed by the Line Leader during their regular shift inspection. An incident report (ID: 12345) has been filed. We need to investigate and enhance the production line's efficiency to address this problem.",
+  "severity": 10,
+  "occurrence": 10,
+  "detection": 10,
+  "rpn": 1000,
+  "status": "open",
+  "created_by": "Operations Manager",
+  "issue_to": "Engineering Team",
+  "date": "2023-07-05 10:00:00",
+  "kpi_id": 1,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-05 10:15:00",
+          "content": "Initial investigation started.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
       },
       {
-        "requestId": 5,
-        "title": "Process Optimization",
-        "description": "Optimize processes to reduce defects",
-        "severity": 3,
-        "occurrence": 4,
-        "detection": 4,
-        "rpn": 48,
-        "status": "pending",
-        "createdBy": "Operations Manager",
-        "issueTo": "Quality Control Team",
-        "date": "2023-07-22 11:00:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-07-22 11:15:00",
-            "content": "Initiating process analysis",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-07-22 12:30:00",
-            "content": "Identified areas for process improvement",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-07-22 14:45:00",
-            "content": "Testing new process parameters",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          }
-        ],
-        "kpiId": 2
+          "comment_id": 2,
+          "created_at": "2023-07-05 11:30:00",
+          "content": "Identified potential bottlenecks in packaging.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
       },
       {
-        "requestId": 6,
-        "title": "Defect Root Cause",
-        "description": "Investigate root causes of defects in the production line",
-        "severity": 4,
-        "occurrence": 3,
-        "detection": 5,
-        "rpn": 60,
-        "status": "open",
-        "createdBy": "Operations Manager",
-        "issueTo": "Quality Control Team",
-        "date": "2023-07-25 09:30:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-07-25 09:45:00",
-            "content": "Initiating root cause analysis",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-07-25 10:30:00",
-            "content": "Identified potential contributing factors",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-07-25 11:15:00",
-            "content": "Conducting in-depth defect analysis",
-            "createdBy": "Quality Control Team",
-            "userName": "Michael Johnson"
-          }
-        ],
-        "kpiId": 2
-      }, {
-        "requestId": 7,
-        "title": "Machine Repair",
-        "description": "Urgent repair required for Machine B-7",
-        "severity": 4,
-        "occurrence": 5,
-        "detection": 4,
-        "rpn": 80,
-        "status": "resolved",
-        "createdBy": "Operations Manager",
-        "issueTo": "Maintenance Team",
-        "date": "2023-07-30 15:20:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-07-30 15:30:00",
-            "content": "Maintenance team dispatched",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-07-30 16:00:00",
-            "content": "Machine repaired and tested successfully",
-            "createdBy": "Maintenance Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-07-30 17:00:00",
-            "content": "Production resumed after repair",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          }
-        ],
-        "kpiId": 3
-      },
-      {
-        "requestId": 8,
-        "title": "Downtime Investigation",
-        "description": "Investigate frequent machine downtime occurrences",
-        "severity": 3,
-        "occurrence": 4,
-        "detection": 4,
-        "rpn": 48,
-        "status": "open",
-        "createdBy": "Operations Manager",
-        "issueTo": "Maintenance Team",
-        "date": "2023-08-02 11:00:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-08-02 11:15:00",
-            "content": "Initiating downtime analysis",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-08-02 12:30:00",
-            "content": "Identified potential causes of downtime",
-            "createdBy": "Maintenance Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-08-02 14:45:00",
-            "content": "Conducting thorough machine inspection",
-            "createdBy": "Maintenance Team",
-            "userName": "Michael Johnson"
-          }
-        ],
-        "kpiId": 3
-      },
-      {
-        "requestId": 9,
-        "title": "Downtime Reduction Strategy",
-        "description": "Develop and implement a strategy to reduce machine downtime",
-        "severity": 2,
-        "occurrence": 3,
-        "detection": 5,
-        "rpn": 30,
-        "status": "pending",
-        "createdBy": "Operations Manager",
-        "issueTo": "Maintenance Team",
-        "date": "2023-08-05 09:30:00",
-        "comments": [
-          {
-            "commentId": 1,
-            "timeStamp": "2023-08-05 09:45:00",
-            "content": "Initiating strategy development",
-            "createdBy": "Operations Manager",
-            "userName": "John Doe"
-          },
-          {
-            "commentId": 2,
-            "timeStamp": "2023-08-05 10:30:00",
-            "content": "Identified potential improvement areas",
-            "createdBy": "Maintenance Team",
-            "userName": "Michael Johnson"
-          },
-          {
-            "commentId": 3,
-            "timeStamp": "2023-08-05 11:15:00",
-            "content": "Exploring technology-based solutions",
-            "createdBy": "Maintenance Team",
-            "userName": "Michael Johnson"
-          }
-        ],
-        "kpiId": 3
+          "comment_id": 3,
+          "created_at": "2023-07-05 13:45:00",
+          "content": "Gathering data for simulation to improve efficiency.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
       }
-    ]
+  ]
+},
+{
+  "id": 2,
+  "title": "Optimize Production Line Layout",
+  "description": "The current production line layout at Production Line 2 is causing inefficiencies, leading to a 7% increase in production time. This issue was observed by the Line Leader during their shift. To improve efficiency, we need to optimize the production line layout, especially at the packaging station.",
+  "severity": 7,
+  "occurrence": 7,
+  "detection": 8,
+  "rpn": 392,
+  "status": "pending",
+  "created_by": "Operations Manager",
+  "issue_to": "Engineering Team",
+  "date": "2023-07-08 09:30:00",
+  "kpi_id": 1,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-08 10:15:00",
+          "content": "Initial analysis of the production line layout started.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-08 11:30:00",
+          "content": "Identified opportunities for layout improvement.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-08 13:45:00",
+          "content": "Simulating new layout scenarios for enhanced efficiency.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
+      }
+  ]
+},
+{
+  "id": 3,
+  "title": "Evaluate and Optimize Production Processes",
+  "description": "We've encountered inefficiencies in our production processes, leading to a 3% increase in defects. These issues were noticed during the quality inspection by the Quality Technician. We need to evaluate and optimize our production processes to reduce defects and improve product quality.",
+  "severity": 3,
+  "occurrence": 3,
+  "detection": 5,
+  "rpn": 45,
+  "status": "open",
+  "created_by": "Operations Manager",
+  "issue_to": "Engineering Team",
+  "date": "2023-07-12 11:00:00",
+  "kpi_id": 1,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-12 11:15:00",
+          "content": "Initial analysis of production processes started.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-12 12:30:00",
+          "content": "Identified bottlenecks in current processes.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-12 14:45:00",
+          "content": "Exploring process optimization strategies to reduce defects.",
+          "created_by": "Engineering Team",
+          "userName": "Engineer"
+      }
+  ]
+},
+{
+  "id": 4,
+  "title": "Address Quality Defects",
+  "description": "Our quality control reports show a recent 2% increase in products rejected due to quality issues, especially in the packaging area at Production Line 2. The Quality Technician has reported this problem. We need to investigate and address the root causes of these defects.",
+  "severity": 2,
+  "occurrence": 3,
+  "detection": 4,
+  "rpn": 24,
+  "status": "open",
+  "created_by": "Operations Manager",
+  "issue_to": "Quality Control Team",
+  "date": "2023-07-20 09:30:00",
+  "kpi_id": 2,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-20 09:45:00",
+          "content": "Initiating data collection for analysis of quality defects.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-20 10:30:00",
+          "content": "Identified potential sources of defects in the packaging area.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-20 11:15:00",
+          "content": "Analyzing defect patterns to improve quality.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      }
+  ]
+},
+{
+  "id": 5,
+  "title": "Reduce Defects through Process Optimization",
+  "description": "Our quality control reports show a recent 4% increase in products rejected due to quality issues in the packaging area at Production Line 2. The Quality Technician has reported this problem. We need to investigate and address the root causes of these defects.",
+  "severity": 3,
+  "occurrence": 4,
+  "detection": 4,
+  "rpn": 48,
+  "status": "pending",
+  "created_by": "Operations Manager",
+  "issue_to": "Quality Control Team",
+  "date": "2023-07-22 11:00:00",
+  "kpi_id": 2,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-22 11:15:00",
+          "content": "Initiating process analysis to reduce defects.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-22 12:30:00",
+          "content": "Identified areas for process improvement to reduce defects.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-22 14:45:00",
+          "content": "Testing new process parameters to minimize defects.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      }
+  ]
+},
+{
+  "id": 6,
+  "title": "Investigate Defect Root Causes",
+  "description": "We've encountered a recent 4% increase in products rejected due to quality issues in the packaging area at Production Line 2. The Quality Technician has reported this problem. We need to investigate and address the root causes of these defects.",
+  "severity": 4,
+  "occurrence": 3,
+  "detection": 5,
+  "rpn": 60,
+  "status": "open",
+  "created_by": "Operations Manager",
+  "issue_to": "Quality Control Team",
+  "date": "2023-07-25 09:30:00",
+  "kpi_id": 2,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-25 09:45:00",
+          "content": "Initiating root cause analysis to address defects.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-25 10:30:00",
+          "content": "Identified potential contributing factors to defects.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-25 11:15:00",
+          "content": "Conducting in-depth defect analysis to determine root causes.",
+          "created_by": "Quality Control Team",
+          "userName": "Quality Technician"
+      }
+  ]
+},
+{
+  "id": 7,
+  "title": "Machine Repair - Urgent",
+  "description": "Machine B-7 at Production Line 2 urgently requires repair due to frequent breakdowns. This issue has been affecting production efficiency. The Maintenance Manager reported this problem. We have dispatched the maintenance team to address this issue.",
+  "severity": 4,
+  "occurrence": 5,
+  "detection": 4,
+  "rpn": 80,
+  "status": "resolved",
+  "created_by": "Operations Manager",
+  "issue_to": "Maintenance Team",
+  "date": "2023-07-30 15:20:00",
+  "kpi_id": 3,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-07-30 15:30:00",
+          "content": "Maintenance team dispatched to address the urgent machine repair.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-07-30 16:00:00",
+          "content": "Machine repaired and tested successfully, production has resumed.",
+          "created_by": "Maintenance Team",
+          "userName": "Maintenance Manager"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-07-30 17:00:00",
+          "content": "Production resumed after machine repair.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      }
+  ]
+},
+{
+  "id": 8,
+  "title": "Investigate Frequent Machine Downtime",
+  "description": "We've been experiencing frequent machine downtime at Production Line 2, causing disruptions to our production schedule. This issue has been reported by the Maintenance Manager. We need to investigate the causes of this downtime and implement measures to reduce it.",
+  "severity": 3,
+  "occurrence": 4,
+  "detection": 4,
+  "rpn": 48,
+  "status": "open",
+  "created_by": "Operations Manager",
+  "issue_to": "Maintenance Team",
+  "date": "2023-08-02 11:00:00",
+  "kpi_id": 3,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-08-02 11:15:00",
+          "content": "Initiating analysis to investigate frequent machine downtime.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-08-02 12:30:00",
+          "content": "Identified potential causes of machine downtime.",
+          "created_by": "Maintenance Team",
+          "userName": "Maintenance Manager"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-08-02 14:45:00",
+          "content": "Conducting a thorough machine inspection to determine the root causes.",
+          "created_by": "Maintenance Team",
+          "userName": "Maintenance Manager"
+      }
+  ]
+},
+{
+  "id": 9,
+  "title": "Downtime Reduction Strategy - Develop and Implement",
+  "description": "We've been experiencing frequent machine downtime at Production Line 2, impacting our productivity. This issue has been reported by the Maintenance Manager. We need to develop and implement a comprehensive strategy to reduce machine downtime and ensure uninterrupted production.",
+  "severity": 2,
+  "occurrence": 3,
+  "detection": 5,
+  "rpn": 30,
+  "status": "pending",
+  "created_by": "Operations Manager",
+  "issue_to": "Maintenance Team",
+  "date": "2023-08-05 09:30:00",
+  "kpi_id": 3,
+  "comments": [
+      {
+          "comment_id": 1,
+          "created_at": "2023-08-05 09:45:00",
+          "content": "Initiating the development of a strategy to reduce machine downtime.",
+          "created_by": "Operations Manager",
+          "userName": "Supervisor"
+      },
+      {
+          "comment_id": 2,
+          "created_at": "2023-08-05 10:30:00",
+          "content": "Identified potential areas for improvement.",
+          "created_by": "Maintenance Team",
+          "userName": "Maintenance Manager"
+      },
+      {
+          "comment_id": 3,
+          "created_at": "2023-08-05 11:15:00",
+          "content": "Exploring technology-based solutions to minimize downtime.",
+          "created_by": "Maintenance Team",
+          "userName": "Maintenance Manager"
+      }
+  ]
+}
+]

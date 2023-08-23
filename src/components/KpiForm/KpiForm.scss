@@ -1,0 +1,143 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.container{
+  width:100%;
+
+  @include flex-justify(center);
+  align-items: center;
+  @include tablet {
+    height: 37.4375rem;
+    width: 30rem;
+  }
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
+
+  &--flipped{
+    transform: rotateY(180deg);
+  }
+
+  &__front {
+    @include flex-justify(center);
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    border-radius: 0.625rem;
+    @include tablet {
+      height: 37.4375rem;
+      width: 30rem;
+    }
+  }
+
+  &__title{
+    font-size: 1.25rem;
+  }
+}
+.kpi-form {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+
+
+  border-radius: 0.625rem;
+  padding: $mobile-margin;
+  width: 100%;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+
+  @include tablet {
+    height: 37.4375rem;
+    width: 30rem;
+    padding: $tablet-desktop-margin;
+  }
+
+  
+  &__title{
+    text-align: center;
+    font-weight: 600;
+  }
+
+  &__label {
+    font-weight: 600;
+    margin-top: $mobile-margin;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__input {
+    @include body-font;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+
+    background-color: rgba(219, 220, 216, 0.161);
+    border: 2px solid #afafaf;
+    outline: none;
+    &:focus {
+      border: 2px solid #303c6c;
+    }
+
+    @include tablet {
+      width: 70%;
+      margin: 0 1rem;
+    }
+
+    &--description {
+      resize: none;
+      height: 7rem;
+      font-family: "Avenir";
+    }
+
+    &--invalid {
+      border: 2px solid #6c3030;
+      &:focus {
+        border: 2px solid #6c3030;
+      }
+    }
+  }
+
+  &__buttons {
+    @include flex-justify(flex-end);
+    padding-top: $mobile-margin;
+    align-self: flex-end;
+  }
+
+  &__cancel {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #6c3030;
+    font-weight: 600;
+    margin: 0 0.5rem;
+    &:hover {
+      text-decoration: 2px underline;
+    }
+  }
+  &__submition {
+    @extend .kpi-form__cancel;
+    color: #303c6c;
+    border-radius: 4px;
+    border: 2px solid #303c6c;
+
+    &:hover {
+      background-color: #303c6c;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}

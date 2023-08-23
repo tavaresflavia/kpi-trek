@@ -1,69 +1,108 @@
 import "./KpiCard.scss";
-import {Link} from 'react-router-dom';
-import history from '../../data/history.json';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from "chart.js";
+import history from "../../data/history.json";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Line } from "react-chartjs-2";
+import RequestItem from "../RequestItem/RequestItem";
 
-
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
+ChartJS.register(
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+);
 
 const KpiCard = () => {
+  const filteredLabels = history
+    .filter((el) => el["kpi_id"] === 1)
+    .map((el) =>{
+    console.log(el["created_at"])
+      return new Date(el["created_at"]).toLocaleDateString("en-us", {
+        month: "long",
+        day: "numeric",
+      })});
 
-  const filteredLabels = history.filter((el) => el.kpiId === 1).map((el) => el.timeStamp)
-  const filteredData = history.filter((el) => el.kpiId === 1).map((el) => el.value)
+
+  const filteredData = history
+    .filter((el) => el["kpi_id"] === 1)
+    .map((el) => el.value);
+  const upperLimit = filteredData.map(() => 98);
+  const target = filteredData.map(() => 95);
+  const lowerLimit = filteredData.map(() => 90);
+  console.log(upperLimit);
 
   const data = {
     labels: filteredLabels,
-    datasets: [{label:"this KPI",
-    data:filteredData}]
+    datasets: [
+      {
+        label: "Values",
+        data: filteredData,
+        borderColor: "#7FD3E3",
+        backgroundColor: "#7FD3E340",
+        // borderColor: "#A9A9A9",
+        // backgroundColor: "#A9A9A940",
+        pointStyle: "circle",
+        pointRadius: 5,
+      },
+      {
+        label: "Upper Limit",
+        data: upperLimit,
+        borderColor: "#f4976cb5",
+        backgroundColor: "#f4976c40",
+        pointStyle: false,
+        borderDash: [10, 10]
+      },
+      {
+        label: "Target",
+        data: target,
+        borderColor: "#9eebd7",
+        backgroundColor: "#9eebd736",
+        pointStyle: false,
+        borderDash: [10, 10]
+      },
+      {
+        label: "Lower Limit",
+        data: lowerLimit,
+        borderColor: "#f4976cb5",
+        backgroundColor: "#f4976c40",
+        pointStyle: false,
+        borderDash: [10, 10]
+      },
+    ],
+  };
 
-  }
-
-  const options ={
-    plugins:{
-      legend:true},
-      // scales{
-      //   y:m
-      // }
+  const options = {
+    legend:{
+      position: "bottom"
     }
+  
+  };
 
-
-  console.log(filteredLabels );
+  console.log(filteredLabels);
   return (
     <article className="kpi-card">
-        <div className= "kpi__card-inner">
-      <div className="kpi-card__graph">
-        <Line
-          data ={data}
-          >
-        
-        </Line>
-      </div>
-      <article className="kpi-requests">
-      
-        <div>
-          <Link className="kpi-requests__link">
-            <div className="kpi-requests__title">
-            <h3 className="kpi-requests__request">
-              Sanitation Delay Impacting Production Start
-            </h3>
-            <div className="kpi-requests__subtitle">
-              <p className="kpi-requests__date">01/01/2001</p>
-              <p className="kpi-requests__rpn">RPN 50</p>
-              <p className="kpi-requests__status"> closed</p>
-              </div>
-            </div>
-          </Link>
+      <div className="kpi__card-inner">
+        <h3 className="kpi-card__title">KPI name </h3>
+        <div className="kpi-card__graph">
+          <Line   data={data} options ={options}></Line>
         </div>
-      </article>
-      </div>
-
-      <div className= "kpi__card-back">
+        <RequestItem/>
+        <RequestItem/>
+        <RequestItem/>
 
         
       </div>
-      
-    
+
+      <div className="kpi__card-back"></div>
     </article>
   );
 };

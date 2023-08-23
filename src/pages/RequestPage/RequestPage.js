@@ -1,36 +1,36 @@
-import RequestForm from "../../components/RequestForm/RequestForm.js";
-import RequestList from "../../components/RequestList/RequestList.js";
 import "./RequestPage.scss";
+import RequestList from "../../components/RequestList/RequestList.js";
+import Filters from "../../components/Filters/Filters.js";
+import RequestForm from "../../components/RequestForm/RequestForm.js";
+import plusIcon from "../../assets/icons/plusIcon.png";
+import { useState } from "react";
 
 const RequestPage = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const hanldeshowForm = () => {
+    const changeshowForm = !showForm;
+    setShowForm(changeshowForm);
+  };
+
   return (
-    <main>
-      <aside className="filters">
-        <div className="filters__sorting">
-          <p className="filters__btn">Sort by KPI</p>
-          <p className="filters__btn">Sort by Date</p>
-        </div>
-
-        {/* <h3 className="filters__title"> Filters </h3> */}
-
-        <div className="filters__assignment">
-
-        <p className="filters__btn">Assigned to me</p>
-        <p className="filters__btn">Created by me</p>
-        </div>
-
-        <div className="filters__status">
-        
-        <p className="filters__btn">Open</p>
-        <p className="filters__btn">Pending</p>
-        <p className="filters__btn">Closed</p>
-        <p className="filters__btn">Resolved</p>
-        </div>
-
-      </aside>
+    <main className="main">
       <div className="main-content">
-        <RequestList />
-        <RequestForm />
+        <div className= "main-content__side-bar">
+          <Filters />
+          <img
+            onClick={hanldeshowForm}
+            className="main-content__plus"
+            src={plusIcon}
+            alt="add request"
+          />
+        </div>
+        <div className= "main-content__cards">
+          <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
+            <RequestForm />
+          </div>
+          <RequestList />
+        </div>
       </div>
     </main>
   );

@@ -2,41 +2,21 @@
 @use "../../styles/partials/mixins" as *;
 
 .kpi-card {
+  margin: $mobile-margin 0;
   width: 100%;
-  padding: $mobile-margin;
-
+  border-radius: 0.625rem;
+  padding: $mobile-margin 0;
   box-shadow: 0 0 20px 8px #d0d0d0;
   @include tablet {
     width: 30rem;
     padding: $tablet-desktop-margin;
   }
+
+  &__title{
+    text-align: center;
+    font-weight: 600;
+  }
   &__graph {
     width: 100%;
   }
 }
-
-.kpi-requests {
-margin-top: $mobile-margin;
-  &__title {
-    padding: $mobile-margin;
-    @include body-font;
-    border: 2px solid #afafaf;
-    border-radius: 0.25rem;
-    
-
-  }
-    &__link {
-        text-decoration: none;
-    }
-  &__subtitle {
-    @include flex-justify(space-between);
-    margin-top: 0.5rem;
-    font-weight: 600;
-    color: #303c6c;
-
-  }
-}
-
-// &__date
-// &__rpn
-// &__status

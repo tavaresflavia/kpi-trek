@@ -2,32 +2,31 @@
 @use "../../styles/partials/mixins" as *;
 
 .request-card {
+  font-size: 0.75rem;
   width: 100%;
-
-  background-color: #fbe8a64d;
-
+  background-image: linear-gradient(to bottom right, #fff, #fbe8a646);
   padding: $mobile-margin;
   box-shadow: 0 0 20px 8px #d0d0d0;
-  border-radius: 0.5rem;
-  margin: $mobile-margin;
+  border-radius: 0.625rem;
+  margin: $mobile-margin 0;
+ 
+
   @include tablet {
+    font-size: 1rem;
     padding: $tablet-desktop-margin;
     margin: $tablet-desktop-margin auto;
   }
 
-  @include desktop {
-    width: 80rem;
-  }
   &__header {
     @include flex-justify(space-between);
   }
 
   &--high-risk {
-    background-color: #f4976c40;
+    background-image: linear-gradient(to bottom right, #f4976c12, #f4976c40);
   }
 
   &--low-risk {
-    background-color: #9eebd736;
+    background-image: linear-gradient(to bottom right, #fff, #9eebd736);
   }
 
   &__title {
@@ -152,5 +151,4 @@
       pointer-events: none;
     }
   }
- 
 }

@@ -1,56 +1,39 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.filters{
+.main-content {
+  @include flex-justify(flex-start);
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  @include desktop {
+    width: 80rem;
+    margin: 0 auto;
+  }
+
+  &__side-bar {
+    @include tablet {
+      padding-left: $mobile-margin;
+    }
+  }
+  &__plus {
+    width: 2rem;
+    @include tablet {
+      width: 2.5rem;
+    }
+  }
+  &__form-wrapper {
+    &--hidden {
+      display: none;
+    }
+  }
+  &__cards {
     width: 100%;
     @include tablet {
-    width:20%;
-    display: inline-block;
-   vertical-align: top;}
-
-
-
-&__btn{
-margin:$mobile-margin;
-@include body-font;
-color: #303c6c;
-height: 2.2rem;
-outline: none;
-font-family: "Avenir";
-font-weight: 600;
-background-color: #ffffff97;
-padding: 0.5rem;
-border-radius: 0.25rem;
-border: 2px solid #303c6c6b;
-display: inline-flex;
-align-items: center;
-
-&--activated {
-  background-color: #fff;
-  border: 2px solid #303c6c;
-}}
-
-&__sorting{
-    border-bottom: 1px solid $outline-color;
-    margin-bottom: $mobile-margin;
-    @include flex-justify(center);
-    @include tablet{
-        margin-bottom: $tablet-desktop-margin;
-
+      padding-right: $tablet-desktop-margin;
     }
-}
-
-&__assignment{
-    @extend .filters__sorting;
-}
-&__status{
-    @extend .filters__sorting;
-    @include tablet{
-        flex-wrap: wrap;
-    }
-}}
-.main-content{
-   @include tablet{ 
-    width: 70%;
-    display: inline-block;}
+  }
 }

@@ -3,23 +3,21 @@
 
 .request {
   width: 100%;
-  // background-color: #9eebd640;
-  // background-color: #fbe8a64d;
-  // background-color: #f4976c40;
+  font-size: 0.875rem;
+
   margin: $tablet-desktop-margin 0;
   padding: $mobile-margin;
   display: flex;
   flex-direction: column;
-  // box-shadow: 0 0 20px 8px #d0d0d0;
-  
-  border-radius: 0.5rem;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  border-radius: 0.625rem;
+
+  border-radius: 0.625rem;
   @include tablet {
+    font-size: 1rem;
     padding: $tablet-desktop-margin;
     flex-direction: row;
     justify-content: space-between;
-  }
-  @include desktop {
-    width: 80rem;
   }
 
   &__text-inputs {
@@ -37,18 +35,17 @@
     justify-content: space-between;
     flex-direction: column;
     @include tablet {
-    flex-direction: row;
+      flex-direction: row;
       &:first-child {
         margin-top: 0;
       }
-      
     }
   }
 
   &__rpn-wrapper {
-    width:100%;
     @extend .request__label;
   }
+  
   &__label-rpn {
     @include tablet {
       min-width: 5.375rem;
@@ -82,27 +79,26 @@
     &--invalid {
       border: 2px solid #6c3030;
       &:focus {
-        border: 2px solid #6c3030;;
+        border: 2px solid #6c3030;
       }
-  
     }
   }
 
   &__rpn-inputs {
-
     @include flex-justify(space-between);
     align-items: flex-start;
 
     flex-direction: column;
 
-    @include tablet{
-    width: 30%;
+    @include tablet {
+      width: 35%;
     }
   }
   &__range {
     accent-color: #303c6c;
     @include tablet {
       margin: 0 0.5rem;
+      width:6.25rem;
     }
   }
 
@@ -110,46 +106,51 @@
     font-weight: 600;
     margin-top: $mobile-margin;
     display: flex;
-    
+
     flex-direction: column;
     @include tablet {
-        width:100%;
-        justify-content: space-between;
-      flex-direction: row;
+      display: inline-block;
+
+      max-height: 1.1875rem;
+
+    }
+  }
+
+  &__rpn-result{
+    @include tablet {
+      padding-left:10.5rem;
     }
   }
 
   &__buttons {
     @include flex-justify(space-between);
-    padding-top:$mobile-margin;
+    padding-top: $mobile-margin;
     align-self: flex-end;
     @include tablet {
-        // padding-top:4rem;
-
+      // padding-top:4rem;
     }
   }
+
   &__cancel {
     padding: 0.5rem 1rem;
     text-decoration: none;
-    color:#6c3030;
+    color: #6c3030;
     font-weight: 600;
     margin: 0 0.5rem;
-    &:hover{
-        text-decoration: 2px underline;
-
+    &:hover {
+      text-decoration: 2px underline;
     }
   }
   &__submition {
     @extend .request__cancel;
-    color:#303c6c;
+    color: #303c6c;
     border-radius: 4px;
-    border:2px solid #303c6c;
+    border: 2px solid #303c6c;
 
-    &:hover{
-    background-color:#303c6c;
-    color:#fff;
-    text-decoration: none;
-
+    &:hover {
+      background-color: #303c6c;
+      color: #fff;
+      text-decoration: none;
     }
 
     &--disabled {

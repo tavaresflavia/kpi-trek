@@ -1,0 +1,50 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.nav{
+    @include flex-justify(center);
+    flex-direction: column;
+
+    @include tablet{
+        font-size: 1.5rem;
+    }
+    @include desktop{
+        width:80rem;
+        margin: 0 auto;
+    }
+    
+    align-items: center;
+    @include tablet{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__link{
+        color: #303c6c;
+        text-decoration: none;
+        margin: $mobile-margin;
+        text-align: left;
+        @include tablet{
+        margin: $tablet-desktop-margin;
+        }
+
+    }
+
+    &__logo{    
+        order:-1;
+        // width:100%;
+        max-width: 100%;
+        
+
+        @include tablet{
+            order:0;
+            width:40%;
+        }
+
+    }
+}
+
+.active{
+    border-bottom:  2px solid #303c6c;
+
+}

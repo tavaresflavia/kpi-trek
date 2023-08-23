@@ -1,0 +1,94 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.tag-bar{
+
+    height: 3.125rem;
+    margin: $mobile-margin $mobile-margin 0 0;
+  
+    &__icon{
+
+      height: 2rem;
+        &--arrow{
+            height:1.5rem;
+
+        }
+
+
+      @include tablet{
+        height: 2.5rem;
+        &--arrow{
+            height:2rem;
+
+        }
+
+      }
+        
+    }
+
+
+    // &__tag {
+    //     margin: $mobile-margin;
+    //     @include body-font;
+    //     color: #303c6c;
+    //     height: 2.2rem;
+    //     outline: none;
+    //     font-family: "Avenir";
+    //     font-weight: 600;
+    //     background-color: #ffffff97;
+    //     padding: 0.5rem;
+    //     border-radius: 0.25rem;
+    //     border: 2px solid #303c6c6b;
+    //     display: inline-flex;
+    //     align-items: center;
+    
+    //     &--activated {
+    //       background-color: #fff;
+    //       border: 2px solid #303c6c;
+    //     }
+    //   }
+
+}
+
+.filters {
+  
+  margin-top: $tablet-desktop-margin;
+  
+  width: 100%;
+  @include tablet {
+    width: 12rem;
+    vertical-align: top;
+    padding-right: $tablet-desktop-margin;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__title {
+    margin-left: 0.5rem;
+    
+  }
+
+  &__sorting {
+    border-bottom: 1px solid $outline-color;
+    margin-bottom: 2rem;
+    @include tablet {
+      margin-bottom: $tablet-desktop-margin;
+    }
+  }
+
+  &__option {
+    margin: 1rem;
+  }
+
+  &__assignment {
+    @extend .filters__sorting;
+  }
+  &__status {
+    @extend .filters__sorting;
+    @include tablet {
+      flex-wrap: wrap;
+    }
+  }
+}

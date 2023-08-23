@@ -85,10 +85,6 @@ const RequestForm = () => {
           Assignee
           <input type="text" className={"request__input " + (isAssigneeValid() ? "":"request__input--invalid") } name="assignee" value = {assignee} onChange={handleChangeAssignee}></input>
         </label>
-        {/* <label className="request__label">
-          Assignee email
-          <input type="text" className="request__input" name="assigneeEmail"></input>
-        </label> */}
       </div>
       <div className="request__rpn-inputs">
         <div className="request__rpn-wrapper">
@@ -133,7 +129,7 @@ const RequestForm = () => {
         </div>
 
         <p className="request__rpn">
-          RPN <span>{detection * severity * occurrence}</span>{" "}
+          RPN <span className="request__rpn-result">{detection * severity * occurrence}</span>{" "}
         </p>
         <div className = "request__buttons">
         <Link to = "/Request" className="request__cancel "><div >Cancel</div></Link>
