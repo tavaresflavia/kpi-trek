@@ -11,10 +11,9 @@ const RequestCard = ({
   description,
   rpn,
   status,
-  createdBy,
-  issueTo,
+  created_by,
+  assigned_to,
   date,
-  comments,
   kpi,
 }) => {
   const [expand, setExpand] = useState(false);
@@ -76,9 +75,9 @@ const RequestCard = ({
       </div>
       <p className="request-card__description">{description}</p>
       <div className="request-card__assignment">
-        <p className="request-card__created-by">Created by <span className ="request-card__value"> {createdBy} </span></p>
+        <p className="request-card__created-by">Created by <span className ="request-card__value"> {created_by} </span></p>
 
-        <p className="request-card__assigned-to">Assigned to <span className ="request-card__value"> {issueTo}</span></p>
+        <p className="request-card__assigned-to">Assigned to <span className ="request-card__value"> {assigned_to}</span></p>
         <img
           className="request-card__expand-icon"
           src={expand ? expandLessIcon : expandIcon}
@@ -111,7 +110,7 @@ const RequestCard = ({
           </button>
         </div>
 
-        {comments.map((el) => {
+        {/* {comments.map((el) => {
           return (
             <Comment
               name={el.userName}
@@ -119,7 +118,7 @@ const RequestCard = ({
               timeStamp={el.timeStamp}
             />
           );
-        })}
+        })} */}
       </div>
     </div>
   );

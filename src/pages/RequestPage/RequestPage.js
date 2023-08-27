@@ -5,7 +5,7 @@ import RequestForm from "../../components/RequestForm/RequestForm.js";
 import plusIcon from "../../assets/icons/plusIcon.png";
 import { useState } from "react";
 
-const RequestPage = () => {
+const RequestPage = ({userId}) => {
   const [showForm, setShowForm] = useState(false);
 
   const hanldeshowForm = () => {
@@ -29,7 +29,7 @@ const RequestPage = () => {
           <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
             <RequestForm />
           </div>
-          <RequestList />
+          <RequestList userId={userId}/>
         </div>
       </div>
     </main>
