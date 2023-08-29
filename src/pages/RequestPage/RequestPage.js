@@ -6,18 +6,43 @@ import plusIcon from "../../assets/icons/plusIcon.png";
 import { useState } from "react";
 
 const RequestPage = ({userId}) => {
+  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:"assignTo"}
   const [showForm, setShowForm] = useState(false);
+  const [checkedValues, setCheckedValues]= useState(defaultValues);
 
   const hanldeshowForm = () => {
     const changeshowForm = !showForm;
     setShowForm(changeshowForm);
   };
+  const handleSort = (e) =>{
+    const newcheckedValues = { ...checkedValues};
+    newcheckedValues.sort = e.target.value;
+    setCheckedValues(newcheckedValues);
+  } 
+  const handleFilterStatus = (selectedSatus) =>{
+    const newcheckedValues = { ...checkedValues};
+    newcheckedValues.filterStatus = selectedSatus;
+    setCheckedValues(newcheckedValues);
+  } 
+  const handleFilterAssign = (e) =>{
+    const newcheckedValues = { ...checkedValues};
+    newcheckedValues.filterAssign = e.target.value ;
+    setCheckedValues(newcheckedValues);
+  } 
+
+
+
+  console.log(checkedValues)
+
 
   return (
     <main className="main">
       <div className="main-content">
         <div className= "main-content__side-bar">
-          <Filters />
+          <Filters 
+          handleSort = {handleSort}
+          handleFilterStatus = {handleFilterStatus}
+          handleFilterAssign = {handleFilterAssign}/>
           <img
             onClick={hanldeshowForm}
             className="main-content__plus"
@@ -29,7 +54,7 @@ const RequestPage = ({userId}) => {
           <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
             <RequestForm />
           </div>
-          <RequestList userId={userId}/>
+          <RequestList userId={4} checkedValues={checkedValues}/>
         </div>
       </div>
     </main>

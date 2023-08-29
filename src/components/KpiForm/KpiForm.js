@@ -108,17 +108,13 @@ const KpiForm = () => {
         </label>
 
         <div className="kpi-form__buttons">
-          <Link to="/KPI" className="kpi-form__cancel ">
-            <div onClick= {handleFlip}>Cancel</div>
-          </Link>
+            <div className="kpi-form__cancel " onClick= {handleFlip}>Cancel</div>
           <Link
             to="/KPI"
             className={
               "kpi-form__submition " +
               (isFormValid() ? "" : "kpi-form__submition--disabled")
-            }>
-
-            <div>Submit </div>
+            }>Submit
           </Link>
         </div>
       </div>

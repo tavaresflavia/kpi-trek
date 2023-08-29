@@ -129,7 +129,7 @@ const RequestForm = () => {
         </div>
 
         <p className="request__rpn">
-          RPN <span className="request__rpn-result">{detection * severity * occurrence}</span>{" "}
+          RPN <span className="request__rpn-result">{detection * severity * occurrence}</span>
         </p>
         <div className = "request__buttons">
         <Link to = "/Request" className="request__cancel "><div >Cancel</div></Link>

@@ -25,7 +25,6 @@ const KpiCard = () => {
   const filteredLabels = history
     .filter((el) => el["kpi_id"] === 1)
     .map((el) =>{
-    console.log(el["created_at"])
       return new Date(el["created_at"]).toLocaleDateString("en-us", {
         month: "long",
         day: "numeric",
@@ -38,7 +37,7 @@ const KpiCard = () => {
   const upperLimit = filteredData.map(() => 98);
   const target = filteredData.map(() => 95);
   const lowerLimit = filteredData.map(() => 90);
-  console.log(upperLimit);
+
 
   const data = {
     labels: filteredLabels,
@@ -87,7 +86,7 @@ const KpiCard = () => {
   
   };
 
-  console.log(filteredLabels);
+
   return (
     <article className="kpi-card">
       <div className="kpi__card-inner">
