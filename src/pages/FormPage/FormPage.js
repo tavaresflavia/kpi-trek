@@ -1,6 +1,18 @@
 import './FormPage.scss'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const FormPage = () => {
+const FormPage = ({userId}) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+        if (!userId) {
+            navigate('/login')
+        }
+    },[userId]
+
+    )
  
 
   const kpis = ["Quality", "Operation"]

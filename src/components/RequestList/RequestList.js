@@ -9,10 +9,14 @@ const RequestList = ({ userId, checkedValues}) => {
   const [error, setError] = useState("");
   const [requests, setRequests] = useState([]);
 
+  const {filterStatus,  filterAssign, sort} = checkedValues
+ 
+  
 
   useEffect(() => {
+    if ( filterAssign){
     axios
-      .get(`${SERVER_URL}/requests/assignedto/${userId}`)
+      .get(`${SERVER_URL}/requests/${filterAssign}/${userId}`)
       .then((res) => {
         if (res)
         setRequests(res.data);
@@ -28,9 +32,7 @@ const RequestList = ({ userId, checkedValues}) => {
         }
         setIsLoading(false);
       });
-
-
-
+    }
 
   }, [userId]);
 
@@ -45,8 +47,6 @@ const RequestList = ({ userId, checkedValues}) => {
 
     
   // }
-
-
 
 
     // .then(() => {
@@ -85,7 +85,7 @@ const RequestList = ({ userId, checkedValues}) => {
             kpi={request.kpi_id}
             created_by={request.created_by}
             assigned_to={request.assigned_to}
-            // date = { new Date(request.created_at).toDateString()}
+            date = { new Date(request.created_at).toDateString()}
             // comments = {request.comments}
           />
         );

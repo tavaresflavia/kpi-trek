@@ -77,7 +77,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
               name="assignment"
               onClick={handleFilterAssign}
             />
-            <label for="assigned"> Assigned to me</label>
+            <label htmlFor="assigned" > Assigned to me</label>
           </div>
 
           <div className="filters__option">
@@ -89,7 +89,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
               name="assignment"
               onClick={handleFilterAssign}
             />
-            <label for="created"> Created by me</label>
+            <label htmlFor="created"> Created by me</label>
           </div>
         </div>
 
@@ -104,7 +104,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
                   id={statusEl}
                   onClick={handleStatus}
                 />
-                <label className="filters_status-lbl" for={statusEl}>
+                <label className="filters_status-lbl" htmlFor={statusEl}>
                   {statusEl}
                 </label>
               </div>

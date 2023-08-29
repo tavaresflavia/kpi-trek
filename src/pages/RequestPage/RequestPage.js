@@ -1,11 +1,25 @@
 import "./RequestPage.scss";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestList from "../../components/RequestList/RequestList.js";
 import Filters from "../../components/Filters/Filters.js";
 import RequestForm from "../../components/RequestForm/RequestForm.js";
 import plusIcon from "../../assets/icons/plusIcon.png";
-import { useState } from "react";
+
+
 
 const RequestPage = ({userId}) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+        if (!userId) {
+            navigate('/login')
+        }
+    },[userId]
+
+    )
+ 
   const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:"assignTo"}
   const [showForm, setShowForm] = useState(false);
   const [checkedValues, setCheckedValues]= useState(defaultValues);

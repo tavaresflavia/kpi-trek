@@ -49,7 +49,7 @@ const RequestCard = ({
         <div className="request-card__title">
           <h3 className="request-card__request">{title}</h3>
           <div className="request-card__subtitle">
-            <p className="request-card__date">{date}</p>
+            <p className="request-card__date" >{date}</p>
             <p className="request-card__rpn">RPN <span className ="request-card__value"> {rpn} </span></p>
             <p className="request-card__kpi"> KPI <span className ="request-card__value"> {kpi} </span></p>
           </div>

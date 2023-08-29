@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import googleIcon from "../../assets/icons/google.png";
-import logo from "../../assets/logo/logo.png";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
@@ -108,7 +107,7 @@ const Login = () => {
 
   return (
     <div className="signup-page">
-      <img className="logo" src={logo} alt="KPITrek logo" />
+
 
       <div className="signup">
         <h3 className="signup__title">Sign up</h3>

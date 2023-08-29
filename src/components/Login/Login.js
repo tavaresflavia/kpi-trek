@@ -2,15 +2,14 @@ import "./Login.scss";
 import { useState } from "react";
 import axios from "axios";
 import googleIcon from "../../assets/icons/google.png";
-import logo from "../../assets/logo/logo.png";
+import { Link, useNavigate } from "react-router-dom";
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const Login = ({changeLogin, handleSignUp}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-
+  const navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -49,6 +48,7 @@ const Login = ({changeLogin, handleSignUp}) => {
         .then((response) => {
             sessionStorage.setItem("token", response.data.token);
             changeLogin();
+            navigate("/");
         })
         .catch((error) => {
             setError(error);
@@ -61,7 +61,6 @@ const Login = ({changeLogin, handleSignUp}) => {
 
   return (
     <div className="login-page">
-      <img className="logo" src={logo} alt="KPITrek logo" />
 
       <div className="login">
         <h3 className="login__title">Log in</h3>
@@ -115,14 +114,14 @@ const Login = ({changeLogin, handleSignUp}) => {
           <img className="login__google" src={googleIcon} alt="google icon" />
           Log in with Google
         </a>
-        <div
-            // href="/signup"
+        <Link
+            to="/signup"
             onClick={handleSignUp}
             className={
               "login__sign-up"
             }>
             Sign up 
-          </div>
+          </Link>
       </div>
       
     </div>
