@@ -8,7 +8,7 @@ const HomePage = ({isLoggedIn}) => {
     useEffect(() => {if(!isLoggedIn){
         navigate('/login')
     
-      }},[isLoggedIn])
+      }},[isLoggedIn, navigate])
 
     
     return (

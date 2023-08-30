@@ -12,7 +12,7 @@ const KpiPage = ({userId}) => {
         if (!userId) {
             navigate('/login')
         }
-    },[userId]
+    },[userId, navigate]
 
     )
     return (

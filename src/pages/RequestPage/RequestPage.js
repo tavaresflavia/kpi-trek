@@ -16,13 +16,14 @@ const RequestPage = ({userId}) => {
         if (!userId) {
             navigate('/login')
         }
-    },[userId]
+    },[userId,navigate]
 
     )
  
-  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:"assignTo"}
+  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:"assignedTo"}
   const [showForm, setShowForm] = useState(false);
   const [checkedValues, setCheckedValues]= useState(defaultValues);
+  const [selectedStatus, setSelectedStatus] = useState([]);
 
   const hanldeshowForm = () => {
     const changeshowForm = !showForm;
@@ -33,9 +34,16 @@ const RequestPage = ({userId}) => {
     newcheckedValues.sort = e.target.value;
     setCheckedValues(newcheckedValues);
   } 
-  const handleFilterStatus = (selectedSatus) =>{
+  const handleFilterStatus = (e) =>{
+    let newSelectedStatus =[];
+    if (selectedStatus.includes(e.target.value)){
+      newSelectedStatus = [...selectedStatus];
+      newSelectedStatus.splice(selectedStatus.indexOf(e.target.value),1);
+    }else{
+      newSelectedStatus = [...selectedStatus, e.target.value];}
     const newcheckedValues = { ...checkedValues};
-    newcheckedValues.filterStatus = selectedSatus;
+    newcheckedValues.filterStatus = newSelectedStatus;
+    setSelectedStatus(newSelectedStatus);
     setCheckedValues(newcheckedValues);
   } 
   const handleFilterAssign = (e) =>{
@@ -43,12 +51,6 @@ const RequestPage = ({userId}) => {
     newcheckedValues.filterAssign = e.target.value ;
     setCheckedValues(newcheckedValues);
   } 
-
-
-
-  console.log(checkedValues)
-
-
   return (
     <main className="main">
       <div className="main-content">
@@ -68,7 +70,7 @@ const RequestPage = ({userId}) => {
           <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
             <RequestForm />
           </div>
-          <RequestList userId={4} checkedValues={checkedValues}/>
+          <RequestList userId={userId} checkedValues={checkedValues}/>
         </div>
       </div>
     </main>

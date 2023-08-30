@@ -16,16 +16,17 @@ const RequestList = ({ userId, checkedValues}) => {
   useEffect(() => {
     if ( filterAssign){
     axios
-      .get(`${SERVER_URL}/requests/${filterAssign}/${userId}`)
+      .get(`${SERVER_URL}/requests/${filterAssign}/${userId}?sort=${sort==="rpn" ? "rpn":"created_at"}`)
       .then((res) => {
-        if (res)
-        setRequests(res.data);
+        const newRequests = res.data.filter(request => (filterStatus.includes(request.request_status)));
+        setRequests(newRequests);
         setIsLoading(false);
         
       })
       .catch((err) => {
         if (err.response.status === 404){
           
+        setRequests([]);
         setError(err.response.message);
         console.log(err.response)
 
@@ -34,30 +35,9 @@ const RequestList = ({ userId, checkedValues}) => {
       });
     }
 
-  }, [userId]);
+  }, [userId, filterAssign, sort,filterStatus]);
 
-  // const handleCreatedBy = () => {
-
-
-  //     axios.get(`${SERVER_URL}/requests/createdby/${userId}`)
-  //     .then((res) =>{
-  //       setRequests(res.data);
-  //     })
-  //     .then()
-
-    
-  // }
-
-
-    // .then(() => {
-      //   axios.get(`${SERVER_URL}/requests/createdby/${userId}`);
-      // })
-      // .then((res) =>{
-      //   setCreatedRequests("create",res.data);
-      //  
-      // })
-
-  if (isLoading) {
+    if (isLoading) {
     return <p> Loading...</p>;
   }
 
@@ -73,7 +53,7 @@ const RequestList = ({ userId, checkedValues}) => {
 
   return (
     <div className="request-list">
-      {requests.map((request) => {
+      {requests.length ? requests.map((request) => {
         return (
           <RequestCard
             key={request.id}
@@ -81,15 +61,15 @@ const RequestList = ({ userId, checkedValues}) => {
             title={request.title}
             description={request.description}
             rpn={request.rpn}
-            status={request.request_status}
-            kpi={request.kpi_id}
+            request_status={request.request_status}
+            kpi={request.kpi_title}
             created_by={request.created_by}
             assigned_to={request.assigned_to}
             date = { new Date(request.created_at).toDateString()}
             // comments = {request.comments}
-          />
+          /> 
         );
-      })}
+      }): <p>No requests found</p>}
     </div>
   );
 };

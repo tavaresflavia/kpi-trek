@@ -9,22 +9,14 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
     const newShowFilters = !showFilters;
     setShowFilters(newShowFilters);
   };
-  const [selectedSatus, setSelectesStatus] = useState([]);
   const statusList = ["Open", "Pending", "Resolved", "Closed"];
 
-  const handleStatus = (e) => {
-    let newSelectesStatus =[];
-    if (selectedSatus.includes(e.target.value)){
-      console.log("index",selectedSatus.indexOf(e.target.value))
-      newSelectesStatus = selectedSatus
-      newSelectesStatus.splice(selectedSatus.indexOf(e.target.value),1)
-    }else{
-      newSelectesStatus = [...selectedSatus, e.target.value];
+  // const handleStatus = (e) => {
 
-    }
-    setSelectesStatus(newSelectesStatus);
-    handleFilterStatus(newSelectesStatus);
-  };
+  //   }
+  //   handleFilterStatus(newSelectesStatus);
+  //   setSelectesStatus(newSelectesStatus);
+  // };
 
   return (
     <>
@@ -102,7 +94,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
                   type="checkbox"
                   value={statusEl}
                   id={statusEl}
-                  onClick={handleStatus}
+                  onClick={handleFilterStatus}
                 />
                 <label className="filters_status-lbl" htmlFor={statusEl}>
                   {statusEl}

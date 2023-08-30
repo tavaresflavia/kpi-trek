@@ -1,6 +1,5 @@
 import "./SignUp.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import googleIcon from "../../assets/icons/google.png";
 

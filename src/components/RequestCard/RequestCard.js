@@ -1,8 +1,14 @@
 import "./RequestCard.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import moment from "moment/moment";
+
+import axios from "axios";
 import expandIcon from "../../assets/icons/expandIcon.png";
 import expandLessIcon from "../../assets/icons/expandLessIcon.png";
 import Comment from "../Comment/Comment";
+
+const SERVER_URL = process.env.REACT_APP_API_URL;
+
 
 const RequestCard = ({
   key,
@@ -10,7 +16,7 @@ const RequestCard = ({
   title,
   description,
   rpn,
-  status,
+  request_status,
   created_by,
   assigned_to,
   date,
@@ -18,6 +24,25 @@ const RequestCard = ({
 }) => {
   const [expand, setExpand] = useState(false);
   const [comment, setComment] = useState("");
+  const [commentList, setCommentList ] = useState([]);
+  const [requestStatus, setRequestStatus] = useState(request_status);
+  
+// Function call
+
+  useEffect(()=> {
+    axios
+    .get(`${SERVER_URL}/comments/${id}`)
+    .then(res => {
+      console.log(res.data)
+      setCommentList(res.data)
+    }
+    )
+    .catch(err =>{
+      console.log(err)
+    })
+     
+
+  },[id])
 
   const handleChangeComment = (e) => {
     setComment(e.target.value);
@@ -41,6 +66,10 @@ const RequestCard = ({
     return true;
   };
 
+  const handleStatus = (e) =>{
+    setRequestStatus(e.target.value)
+  }
+
   return (
     <div
       className={`request-card  ${301 > rpn ? "request-card--low-risk" : ""}
@@ -58,17 +87,17 @@ const RequestCard = ({
           className="request-card__status"
           id="status"
           name="status"
-          value={status}>
-          <option className="request-card__status-option" value="open">
+          value={requestStatus} onChange={handleStatus}>
+          <option className="request-card__status-option" value="Open">
             Open
           </option>
-          <option className="request-card__status-option" value="pending">
+          <option className="request-card__status-option" value="Pending">
             Pending
           </option>
-          <option className="request-card__status-option" value="resolved">
+          <option className="request-card__status-option" value="Resolved">
             Resolved
           </option>
-          <option className="request-card__status-option" value="closed">
+          <option className="request-card__status-option" value="Closed">
             Closed
           </option>
         </select>
@@ -110,15 +139,17 @@ const RequestCard = ({
           </button>
         </div>
 
-        {/* {comments.map((el) => {
+        {!commentList.length && <div>No comment found</div>}
+
+        {!!commentList.length && commentList.map((comment) => {
           return (
             <Comment
-              name={el.userName}
-              content={el.content}
-              timeStamp={el.timeStamp}
+              name={comment.username}
+              content={comment.content}
+              timeStamp={ moment(new Date(comment.created_at)).fromNow()}
             />
           );
-        })} */}
+        })}
       </div>
     </div>
   );
