@@ -11,12 +11,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
   };
   const statusList = ["Open", "Pending", "Resolved", "Closed"];
 
-  // const handleStatus = (e) => {
 
-  //   }
-  //   handleFilterStatus(newSelectesStatus);
-  //   setSelectesStatus(newSelectesStatus);
-  // };
 
   return (
     <>
@@ -86,9 +81,9 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
         </div>
 
         <div className="filters__status">
-          {statusList.map((statusEl) => {
+          {statusList.map((statusEl,i) => {
             return (
-              <div className="filters__option">
+              <div key= {i} className="filters__option">
                 <input
                   className="filters__input"
                   type="checkbox"

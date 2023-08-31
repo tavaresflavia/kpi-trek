@@ -1,7 +1,6 @@
 import "./RequestCard.scss";
 import { useEffect, useState } from "react";
 import moment from "moment/moment";
-
 import axios from "axios";
 import expandIcon from "../../assets/icons/expandIcon.png";
 import expandLessIcon from "../../assets/icons/expandLessIcon.png";
@@ -9,9 +8,8 @@ import Comment from "../Comment/Comment";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-
 const RequestCard = ({
-  key,
+  userId,
   id,
   title,
   description,
@@ -24,25 +22,20 @@ const RequestCard = ({
 }) => {
   const [expand, setExpand] = useState(false);
   const [comment, setComment] = useState("");
-  const [commentList, setCommentList ] = useState([]);
+  const [commentList, setCommentList] = useState([]);
   const [requestStatus, setRequestStatus] = useState(request_status);
-  
-// Function call
 
-  useEffect(()=> {
+
+  useEffect(() => {
     axios
-    .get(`${SERVER_URL}/comments/${id}`)
-    .then(res => {
-      console.log(res.data)
-      setCommentList(res.data)
-    }
-    )
-    .catch(err =>{
-      console.log(err)
-    })
-     
-
-  },[id])
+      .get(`${SERVER_URL}/comments/${id}`)
+      .then((res) => {
+        setCommentList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id,comment]);
 
   const handleChangeComment = (e) => {
     setComment(e.target.value);
@@ -66,9 +59,31 @@ const RequestCard = ({
     return true;
   };
 
-  const handleStatus = (e) =>{
-    setRequestStatus(e.target.value)
-  }
+  const handleStatus = (e) => {
+    axios
+      .patch(`${SERVER_URL}/requests/${id}`, {
+        request_status: e.target.value,
+      })
+      .then((res) => setRequestStatus(res.data.request_status))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleCommentSubmit = () => { 
+    axios
+      .post(`${SERVER_URL}/comments`, {
+        content: comment,
+        created_by: userId,
+        request_id: id,
+      })
+      .then((res) => {
+        setComment("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div
@@ -78,16 +93,21 @@ const RequestCard = ({
         <div className="request-card__title">
           <h3 className="request-card__request">{title}</h3>
           <div className="request-card__subtitle">
-            <p className="request-card__date" >{date}</p>
-            <p className="request-card__rpn">RPN <span className ="request-card__value"> {rpn} </span></p>
-            <p className="request-card__kpi"> KPI <span className ="request-card__value"> {kpi} </span></p>
+            <p className="request-card__date">{date}</p>
+            <p className="request-card__rpn">
+              RPN <span className="request-card__value"> {rpn} </span>
+            </p>
+            <p className="request-card__kpi">
+              KPI <span className="request-card__value"> {kpi} </span>
+            </p>
           </div>
         </div>
         <select
           className="request-card__status"
           id="status"
           name="status"
-          value={requestStatus} onChange={handleStatus}>
+          value={requestStatus}
+          onChange={handleStatus}>
           <option className="request-card__status-option" value="Open">
             Open
           </option>
@@ -104,9 +124,14 @@ const RequestCard = ({
       </div>
       <p className="request-card__description">{description}</p>
       <div className="request-card__assignment">
-        <p className="request-card__created-by">Created by <span className ="request-card__value"> {created_by} </span></p>
+        <p className="request-card__created-by">
+          Created by <span className="request-card__value"> {created_by} </span>
+        </p>
 
-        <p className="request-card__assigned-to">Assigned to <span className ="request-card__value"> {assigned_to}</span></p>
+        <p className="request-card__assigned-to">
+          Assigned to{" "}
+          <span className="request-card__value"> {assigned_to}</span>
+        </p>
         <img
           className="request-card__expand-icon"
           src={expand ? expandLessIcon : expandIcon}
@@ -131,6 +156,7 @@ const RequestCard = ({
             onChange={handleChangeComment}></textarea>
 
           <button
+            onClick={handleCommentSubmit}
             className={
               "update__submit " +
               (isSubmitValid() ? "" : "update__submit--disabled")
@@ -139,17 +165,19 @@ const RequestCard = ({
           </button>
         </div>
 
-        {!commentList.length && <div>No comment found</div>}
+        {!commentList.length && <div>Add the first comment.</div>}
 
-        {!!commentList.length && commentList.map((comment) => {
-          return (
-            <Comment
-              name={comment.username}
-              content={comment.content}
-              timeStamp={ moment(new Date(comment.created_at)).fromNow()}
-            />
-          );
-        })}
+        {!!commentList.length &&
+          commentList.map((comment, i) => {
+            return (
+              <Comment
+                key={i}
+                name={comment.username}
+                content={comment.content}
+                timeStamp={moment(new Date(comment.created_at)).fromNow()}
+              />
+            );
+          })}
       </div>
     </div>
   );

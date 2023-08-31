@@ -30,7 +30,7 @@
     // &__tag {
     //     margin: $mobile-margin;
     //     @include body-font;
-    //     color: #303c6c;
+    //     color: $primary-text-color;
     //     height: 2.2rem;
     //     outline: none;
     //     font-family: "Avenir";
@@ -44,7 +44,7 @@
     
     //     &--activated {
     //       background-color: #fff;
-    //       border: 2px solid #303c6c;
+    //       border: 2px solid $primary-text-color;
     //     }
     //   }
 

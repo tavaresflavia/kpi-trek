@@ -1,10 +1,11 @@
 import "./RequestPage.scss";
 import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,} from "react-router-dom";
 import RequestList from "../../components/RequestList/RequestList.js";
 import Filters from "../../components/Filters/Filters.js";
 import RequestForm from "../../components/RequestForm/RequestForm.js";
 import plusIcon from "../../assets/icons/plusIcon.png";
+import RequestCard from "../../components/RequestCard/RequestCard";
 
 
 
@@ -20,12 +21,13 @@ const RequestPage = ({userId}) => {
 
     )
  
-  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:"assignedTo"}
+  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:""}
+
   const [showForm, setShowForm] = useState(false);
   const [checkedValues, setCheckedValues]= useState(defaultValues);
   const [selectedStatus, setSelectedStatus] = useState([]);
 
-  const hanldeshowForm = () => {
+  const handleShowForm = () => {
     const changeshowForm = !showForm;
     setShowForm(changeshowForm);
   };
@@ -60,7 +62,7 @@ const RequestPage = ({userId}) => {
           handleFilterStatus = {handleFilterStatus}
           handleFilterAssign = {handleFilterAssign}/>
           <img
-            onClick={hanldeshowForm}
+            onClick={handleShowForm}
             className="main-content__plus"
             src={plusIcon}
             alt="add request"
@@ -68,9 +70,10 @@ const RequestPage = ({userId}) => {
         </div>
         <div className= "main-content__cards">
           <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
-            <RequestForm />
+            <RequestForm userId={userId} handleShowForm={handleShowForm} />
           </div>
-          <RequestList userId={userId} checkedValues={checkedValues}/>
+          <RequestList showForm={showForm} userId={userId} checkedValues={checkedValues}/>
+          {/* only passed showForm to force re-render  */}
         </div>
       </div>
     </main>

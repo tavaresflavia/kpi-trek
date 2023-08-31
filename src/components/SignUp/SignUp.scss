@@ -19,7 +19,7 @@
   padding: $mobile-margin;
   width: 100%;
   box-shadow: 0 0 20px 8px #d0d0d0;
-  height: 40rem;
+  height: 43rem;
   
   max-width: 30rem;
 
@@ -55,7 +55,7 @@
     border: 2px solid #afafaf;
     outline: none;
     &:focus {
-      border: 2px solid #303c6c;
+      border: 2px solid $primary-text-color;
     }
 
     &--invalid {
@@ -80,12 +80,12 @@
     padding-block: 0.5rem;
     text-decoration: none;
     font-weight: 600;
-    color: #303c6c;
+    color: $primary-text-color;
     border-radius: 20px;
-    border: 2px solid #303c6c;
+    border: 2px solid $primary-text-color;
 
     &:hover {
-      background-color: #303c6c;
+      background-color: $primary-text-color;
       color: #fff;
       text-decoration: none;
     }
@@ -104,9 +104,9 @@
     padding-block: 0.5rem;
     text-decoration: none;
     font-weight: 600;
-    color: #303c6c;
+    color: $primary-text-color;
     border-radius: 20px;
-    border: 2px solid #303c6c;
+    border: 2px solid $primary-text-color;
     
   }
 
@@ -121,7 +121,7 @@
     text-align: center  ;
     padding-top:2rem;
     font-weight: 600;
-    color: #303c6c;
+    color: $primary-text-color;
 
   }  
 

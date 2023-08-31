@@ -19,7 +19,7 @@
     }
 
     &__link{
-        color: #303c6c;
+        color: $primary-text-color;
         text-decoration: none;
         margin: $mobile-margin;
         text-align: left;
@@ -44,6 +44,6 @@
 }
 
 .active{
-    border-bottom:  2px solid #303c6c;
+    border-bottom:  2px solid $primary-text-color;
 
 }

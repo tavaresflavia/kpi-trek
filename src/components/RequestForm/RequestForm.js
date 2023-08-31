@@ -1,89 +1,182 @@
 import "./RequestForm.scss";
-import { useState } from "react";
-import {Link} from 'react-router-dom';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const RequestForm = () => {
+const SERVER_URL = process.env.REACT_APP_API_URL;
+
+const RequestForm = ({ userId, handleShowForm }) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [severity, setSeverity] = useState(1);
   const [detection, setDetection] = useState(1);
   const [occurrence, setOccurrence] = useState(1);
-  const [request, setRequest] = useState("");
-  const [description, setDescription] = useState("");
   const [assignee, setAssignee] = useState("");
+  const [users, setUsers] = useState("");
+  const [kpis, setKpis] = useState("");
+  const [kpi, setKpi] = useState("");
+  const [error, setError] = useState("");
 
 
+  useEffect(() => {
+    axios
+      .get(`${SERVER_URL}/users`)
+      .then((res) => {
+       
+        setUsers(res.data);
+      })
+      .then(() => {
+        axios.get(`${SERVER_URL}/kpis/${userId}`)
+        .then((res) => {
+          if (res.data.length === 0){
+          setError("Please create KPIs before sending requests");
+          }
+          setKpis(res.data);
+        });
+      })
+      .catch((err) => {
+        console.log(err)
+        setError(err.response.message);
+      });
+  }, [userId]);
 
-  const handleChangeRequest= (e) => {
-    setRequest(e.target.value);
+
+  //HANDLE CHANGE
+
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
   };
-
-  const handleChangeDescription= (e) => {
+  const handleChangeDescription = (e) => {
     setDescription(e.target.value);
   };
-
-  const handleChangeAssignee= (e) => {
+  const handleChangeAssignee = (e) => {
     setAssignee(e.target.value);
   };
-
+  const handleChangeKpi = (e) => {
+    setKpi(e.target.value);
+  };
   const handleChangeSeverity = (e) => {
     setSeverity(e.target.value);
   };
-
   const handleChangeDetection = (e) => {
     setDetection(e.target.value);
   };
-
   const handleChangeOccurrence = (e) => {
     setOccurrence(e.target.value);
   };
-
-  const isRequestValid = () => {
-    if (request && request.length < 5 ){
+  const isTitleValid = () => {
+    if (title && title.length < 5) {
       return false;
     }
     return true;
   };
-
   const isDescriptionValid = () => {
-    if (description && description.length < 15 ){
-      return false;
-    }
-    return true;
-  };
-
-  const isAssigneeValid = () => {
-    if (assignee && assignee.length < 3 ){
+    if (description && description.length < 15) {
       return false;
     }
     return true;
   };
 
   const isFormValid = () => {
-    if (!request || !description || !assignee || !isRequestValid() || !isDescriptionValid() || !isAssigneeValid()){
+    if (
+      !title ||
+      !description ||
+      !assignee ||
+      !isTitleValid() ||
+      !isDescriptionValid() 
+    ) {
       return false;
     }
     return true;
   };
 
+  
+
+  const handleSubmit = () => {
+    if (isFormValid()) {
+      axios
+        .post(`${SERVER_URL}/requests`, {
+          title: title,
+          description: description,
+          rpn: detection * severity * occurrence,
+          severity: severity,
+          occurrence: occurrence,
+          detection: detection,
+          request_status: "Open",
+          created_by: userId,
+          assigned_to: assignee,
+          kpi_id: kpi,
+        })
+        .then(() => {
+          handleShowForm();
+          setKpi("");
+          setTitle("")
+          
+        })
+        .catch( (err) => {
+          console.log(err)
+        })
+    }
+  };
+
   return (
     <div className="request">
       <div className="request__text-inputs">
+      {error && <p className="request__error">{error}</p>}
         <label className="request__label">
           Request
-          <input type="text" className={"request__input " + (isRequestValid() ? "":"request__input--invalid")} name="request" value= 
-          {request}  onChange={handleChangeRequest}></input>
+          <input
+            type="text"
+            className={
+              "request__input " +
+              (isTitleValid() ? "" : "request__input--invalid")
+            }
+            name="title"
+            value={title}
+            onChange={handleChangeTitle}></input>
         </label>
         <label className="request__label">
           Description
           <textarea
             type="text"
-            className= {"request__input request__input--description " + (isDescriptionValid() ? "":"request__input--invalid")}
+            className={
+              "request__input request__input--description " +
+              (isDescriptionValid() ? "" : "request__input--invalid")
+            }
             name="description"
-            value= {description} onChange={handleChangeDescription}
-            ></textarea>
+            value={description}
+            onChange={handleChangeDescription}></textarea>
         </label>
         <label className="request__label">
           Assignee
-          <input type="text" className={"request__input " + (isAssigneeValid() ? "":"request__input--invalid") } name="assignee" value = {assignee} onChange={handleChangeAssignee}></input>
+          <select
+            type="text"
+            className={"request__input "}
+            name="assignee"
+            onChange={handleChangeAssignee}>
+            <option value="">Please select</option> 
+            {users.length &&
+              users.map((user) => {
+                return (<option key={user.id} value={user.id}>
+                    {user.username} |  {user.team} </option>
+
+                );
+              })}
+          </select>
+        </label>
+        <label className="request__label">
+          KPI
+          <select
+            type="text"
+            className={"request__input "}
+            name="kpi"
+            onChange={handleChangeKpi}
+           >
+            <option value="">Please select</option> 
+            {kpis.length &&
+              kpis.map((kpi) => {
+                return <option key={kpi.id} value={kpi.id}  > {kpi.title}  </option>;
+              })}
+          </select>
         </label>
       </div>
       <div className="request__rpn-inputs">
@@ -129,11 +222,23 @@ const RequestForm = () => {
         </div>
 
         <p className="request__rpn">
-          RPN <span className="request__rpn-result">{detection * severity * occurrence}</span>
+          RPN
+          <span className="request__rpn-result">
+            {detection * severity * occurrence}
+          </span>
         </p>
-        <div className = "request__buttons">
-        <Link to = "/Request" className="request__cancel "><div >Cancel</div></Link>
-        <Link to = "/Request" className= {"request__submition " + (isFormValid() ? "": "request__submition--disabled") }><div >Submit</div></Link>
+        <div className="request__buttons">
+          <div className="request__cancel " onClick={handleShowForm}>
+            Cancel
+          </div>
+          <div
+            className={
+              "request__submition " +
+              (isFormValid() ? "" : "request__submition--disabled")
+            }
+            onClick={handleSubmit}>
+            Submit
+          </div>
         </div>
       </div>
     </div>

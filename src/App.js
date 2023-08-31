@@ -34,7 +34,7 @@ function App() {
         .then((response) => {
           setUser(response.data);
           setIsAuthenticating(false);
-        setIsLoggedIn(true);
+          setIsLoggedIn(true);
         }) 
         .catch((error) => {
           setIsAuthenticating(false);
@@ -44,24 +44,18 @@ function App() {
     axios
       .get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
       .then((res) => {
+        setUser(res.data);
         setIsAuthenticating(false);
         setIsLoggedIn(true);
-        setUser(res.data);
       })
       .catch((err) => {
-        if (err.response.status === 401) {
           setIsAuthenticating(false);
           setIsLoggedIn(false);
-        } else {
-          console.log('Error authenticating', err);
-        }
       });
     }
   }, [token]);
 
   if (isAuthenticating) return null;
-
-console.log(isAuthenticating,isLoggedIn)
 
 
   
