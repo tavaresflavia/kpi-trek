@@ -5,17 +5,15 @@ import axios from "axios";
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const RequestForm = ({ userId, handleShowForm }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [severity, setSeverity] = useState(1);
-  const [detection, setDetection] = useState(1);
-  const [occurrence, setOccurrence] = useState(1);
-  const [assignee, setAssignee] = useState("");
+  const [error, setError] = useState("");
   const [users, setUsers] = useState("");
   const [kpis, setKpis] = useState("");
-  const [kpi, setKpi] = useState("");
-  const [error, setError] = useState("");
+  const defaultValues = {title: "",
+  description:  "",
+   detection: 1, severity: 1, occurrence: 1, assignee:"", kpi:"" } 
+  const [values, setValues] = useState(defaultValues)
 
+  
 
   useEffect(() => {
     axios
@@ -42,35 +40,20 @@ const RequestForm = ({ userId, handleShowForm }) => {
 
   //HANDLE CHANGE
 
-  const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleChangeDescription = (e) => {
-    setDescription(e.target.value);
-  };
-  const handleChangeAssignee = (e) => {
-    setAssignee(e.target.value);
-  };
-  const handleChangeKpi = (e) => {
-    setKpi(e.target.value);
-  };
-  const handleChangeSeverity = (e) => {
-    setSeverity(e.target.value);
-  };
-  const handleChangeDetection = (e) => {
-    setDetection(e.target.value);
-  };
-  const handleChangeOccurrence = (e) => {
-    setOccurrence(e.target.value);
-  };
+  const handleChange = (e) => {
+    const newValues ={...values}
+    newValues[e.target.name] = e.target.value;
+    setValues (newValues) 
+  }
+
   const isTitleValid = () => {
-    if (title && title.length < 5) {
+    if (values.title && values.title.length < 5) {
       return false;
     }
     return true;
   };
   const isDescriptionValid = () => {
-    if (description && description.length < 15) {
+    if (values.description && values.description.length < 15) {
       return false;
     }
     return true;
@@ -78,9 +61,9 @@ const RequestForm = ({ userId, handleShowForm }) => {
 
   const isFormValid = () => {
     if (
-      !title ||
-      !description ||
-      !assignee ||
+      !values.title ||
+      !values.description ||
+      !values.assignee ||
       !isTitleValid() ||
       !isDescriptionValid() 
     ) {
@@ -95,21 +78,20 @@ const RequestForm = ({ userId, handleShowForm }) => {
     if (isFormValid()) {
       axios
         .post(`${SERVER_URL}/requests`, {
-          title: title,
-          description: description,
-          rpn: detection * severity * occurrence,
-          severity: severity,
-          occurrence: occurrence,
-          detection: detection,
+          title: values.title,
+          description: values.description,
+          rpn: values.detection * values.severity * values.occurrence,
+          severity: values.severity,
+          occurrence: values.occurrence,
+          detection: values.detection,
           request_status: "Open",
           created_by: userId,
-          assigned_to: assignee,
-          kpi_id: kpi,
+          assigned_to: values.assignee,
+          kpi_id: values.kpi,
         })
         .then(() => {
           handleShowForm();
-          setKpi("");
-          setTitle("")
+          setValues(defaultValues)
           
         })
         .catch( (err) => {
@@ -131,8 +113,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
               (isTitleValid() ? "" : "request__input--invalid")
             }
             name="title"
-            value={title}
-            onChange={handleChangeTitle}></input>
+            value={values.title}
+            onChange={handleChange}></input>
         </label>
         <label className="request__label">
           Description
@@ -143,8 +125,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
               (isDescriptionValid() ? "" : "request__input--invalid")
             }
             name="description"
-            value={description}
-            onChange={handleChangeDescription}></textarea>
+            value={values.description}
+            onChange={handleChange}></textarea>
         </label>
         <label className="request__label">
           Assignee
@@ -152,7 +134,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
             type="text"
             className={"request__input "}
             name="assignee"
-            onChange={handleChangeAssignee}>
+            value = {values.assignee}
+            onChange={handleChange}>
             <option value="">Please select</option> 
             {users.length &&
               users.map((user) => {
@@ -169,7 +152,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
             type="text"
             className={"request__input "}
             name="kpi"
-            onChange={handleChangeKpi}
+            onChange={handleChange}
+            value={values.kpi}
            >
             <option value="">Please select</option> 
             {kpis.length &&
@@ -188,23 +172,23 @@ const RequestForm = ({ userId, handleShowForm }) => {
             name="severity"
             min="1"
             max="10"
-            value={severity}
+            value={values.severity}
             step="1"
-            onChange={handleChangeSeverity}></input>
-          <p> {severity}</p>
+            onChange={handleChange}></input>
+          <p> {values.severity}</p>
         </div>
         <div className="request__rpn-wrapper">
           <label className="request__label-rpn">Occurrence</label>
           <input
             type="range"
             className="request__range"
-            name="severity"
+            name="occurrence"
             min="1"
             max="10"
-            value={occurrence}
+            value={values.occurrence}
             step="1"
-            onChange={handleChangeOccurrence}></input>
-          <p> {occurrence}</p>
+            onChange={handleChange}></input>
+          <p> {values.occurrence}</p>
         </div>
 
         <div className="request__rpn-wrapper">
@@ -212,19 +196,19 @@ const RequestForm = ({ userId, handleShowForm }) => {
           <input
             type="range"
             className="request__range"
-            name="severity"
+            name="detection"
             min="1"
             max="10"
-            value={detection}
+            value={values.detection}
             step="1"
-            onChange={handleChangeDetection}></input>
-          <p> {detection}</p>
+            onChange={handleChange}></input>
+          <p> {values.detection}</p>
         </div>
 
         <p className="request__rpn">
           RPN
           <span className="request__rpn-result">
-            {detection * severity * occurrence}
+            {values.detection * values.severity * values.occurrence}
           </span>
         </p>
         <div className="request__buttons">

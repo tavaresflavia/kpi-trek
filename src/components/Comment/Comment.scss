@@ -4,24 +4,27 @@
 .comment {
   margin: 0.5rem 0;
   background-color: #ffffff97;
-  padding: 0.5rem;
   border-radius: 40px;
-  padding: $mobile-margin;
+  padding: $mobile-margin 2rem;
   display: inline-flex;
   flex-direction: column;
   align-self: flex-start;
+  width:80%;
+  
+  box-shadow: 0 0 8px 4px #d0d0d080;
+  @include tablet{
+    width:70%;
+  }
 
   &:nth-child(2n) {
     align-self: flex-end;
-    .comment__name {
-      text-align: right;
-    }
   }
 
   &__name {
     display: inline-block;
     color: $primary-text-color;
     font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 
   &__text {
