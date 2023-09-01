@@ -103,7 +103,8 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
     legend: {
       position: "bottom",
     },
-
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -112,7 +113,7 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
               let obs;
               observations.forEach((el) => {
                 if (context[0].label === el[1]) {
-                  obs = [el[2],el[0]];
+                  obs = [el[2], el[0]];
                 }
               });
               return obs;

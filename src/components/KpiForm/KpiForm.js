@@ -76,6 +76,7 @@ const KpiForm = ({userId}) => {
         </div>
         <div className="kpi-form">
           <h3 className="kpi-form__title">Add new KPI</h3>
+          <div className="kpi-form__row">
           <label className="kpi-form__label">
             Name
           </label>
@@ -89,6 +90,8 @@ const KpiForm = ({userId}) => {
               value={values.title}
               onChange={handleChange}
             />
+            </div>
+          <div className="kpi-form__row">
           <label className="kpi-form__label">
             Description
           </label>
@@ -101,6 +104,8 @@ const KpiForm = ({userId}) => {
               value={values.description}
               id="description"
               onChange={handleChange}></textarea>
+              </div>
+              <div className="kpi-form__row">
           <label className="kpi-form__label">
             Unit
           </label>
@@ -111,9 +116,10 @@ const KpiForm = ({userId}) => {
               value={values.unit}
               onChange={handleChange}
             />
+            </div>
 
             <div  className="kpi-form__limits">
-            <div>
+            <div className="kpi-form__limit">
 
           <label className="kpi-form__label">
             Target
@@ -126,7 +132,7 @@ const KpiForm = ({userId}) => {
               onChange={handleChange}
             />
             </div>
-            <div>
+            <div className="kpi-form__limit">
           <label className="kpi-form__label">
             Upper Limit
           </label>
@@ -138,7 +144,7 @@ const KpiForm = ({userId}) => {
               onChange={handleChange}
             />
             </div>
-           <div>
+           <div className="kpi-form__limit">
           <label className="kpi-form__label">
             Lower Limit
           </label>

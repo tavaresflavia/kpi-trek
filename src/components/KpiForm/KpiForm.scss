@@ -25,11 +25,12 @@
     align-items: center;
     position:absolute;
     backface-visibility: hidden;
-    width: 100%;
+    width: calc(100vw - 2rem);
     box-shadow: 0 0 20px 8px #d0d0d0;
     border-radius: 0.625rem;
+    height: 33.3125rem;
+
     @include tablet {
-      height: 33.3125rem;
       width: 30rem;
     }
   }
@@ -39,13 +40,16 @@
   }
 }
 .kpi-form {
+  
+  @include flex-justify(center);
+  flex-direction: column;
   backface-visibility: hidden;
   transform: rotateY(180deg);
 
 
   border-radius: 0.625rem;
   padding: $mobile-margin;
-  width: 100%;
+  width: calc(100vw - 2rem);
   box-shadow: 0 0 20px 8px #d0d0d0;
 
   @include tablet {
@@ -58,14 +62,14 @@
   &__title{
     text-align: center;
     font-weight: 600;
-    margin-block:$mobile-margin;
+    margin-top:$mobile-margin;
   }
 
   &__label {
     font-weight: 600;
     margin-top: $mobile-margin;
     display: inline-block;
-    width:7rem;
+    
     vertical-align: top;
   
     @include tablet {
@@ -80,12 +84,12 @@
     @include body-font;
     display: inline-block;
     border-radius: 0.25rem;
-    margin-top: $mobile-margin;
     padding: 0.5rem;
     background-color: rgba(219, 220, 216, 0.161);
     border: 2px solid #afafaf;
     outline: none;
-    width: 17.5rem;
+
+
     &:focus {
       border: 2px solid $primary-text-color;
     }
@@ -96,6 +100,7 @@
     }
 
     &--description {
+      display: inline-block;
       resize: none;
       height: 7rem;
       font-family: "Avenir";
@@ -110,10 +115,23 @@
     }
   }
 
+  &__row{
+    
+    @include flex-justify(space-between);
+    flex-direction: column;
+    margin-top: $mobile-margin;
+  
+
+  }
+
   &__limits{
     @include flex-justify(space-between);
-    margin-block:2rem;
+    margin-block:$mobile-margin;
 
+  }
+  &__limit{
+    display: flex;
+    flex-direction: column;
   }
 
   &__buttons {

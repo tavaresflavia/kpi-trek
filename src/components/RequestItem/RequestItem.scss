@@ -2,14 +2,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .kpi-requests {
-  margin: $mobile-margin $mobile-margin 0;
+  margin: 0.5rem $mobile-margin 0;
   @include tablet {
     margin: $mobile-margin 0 0;
   }
 
   &__title {
     font-weight: 400;
-
     padding: 0.5rem;
     @include body-font;
     border-top: 1px solid #afafaf63;
@@ -20,6 +19,7 @@
     text-decoration: none;
   }
   &__subtitle {
+    @include body-font;
     @include flex-justify(space-between);
     margin-top: 0.25rem;
     font-weight: 600;
@@ -30,10 +30,9 @@
     width: 7.5rem;
   }
   &__rpn {
-  
-  width:5rem;
+    width: 5rem;
   }
-  &__status { 
-    width:5rem; 
+  &__status {
+    width: 5rem;
   }
 }

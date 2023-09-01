@@ -44,7 +44,7 @@ const FormPage = ({ userId }) => {
       .post(`${SERVER_URL}/kpis/entries`, values)
       .then((_res) => {
         setValues(defaultValues);
-        navigate('/KPI');
+        navigate("/KPI");
       })
       .catch((err) => {
         setError(err.response.data);
@@ -58,10 +58,19 @@ const FormPage = ({ userId }) => {
         <h3 className="entry__title">KPI Entry</h3>
         <label className="entry__label">
           KPI
-          <select className="entry__input " type="kpi" name="kpi_id" id="kpi" onChange={handleChange}>
-          <option value="">Please select</option>
+          <select
+            className="entry__input "
+            type="kpi"
+            name="kpi_id"
+            id="kpi"
+            onChange={handleChange}>
+            <option value="">Please select</option>
             {kpis.map((kpi) => {
-              return <option key={kpi.id} value={kpi.id}>{kpi.title}</option>;
+              return (
+                <option key={kpi.id} value={kpi.id}>
+                  {kpi.title}
+                </option>
+              );
             })}
           </select>
         </label>
@@ -85,10 +94,8 @@ const FormPage = ({ userId }) => {
           />
         </label>
         {!!error && <p className="entry__error">{error}</p>}
-        <div className="entry__submittion-wrap">
-          <div onClick={handleSubmit} href="/" className="entry__submition ">
-            Submit
-          </div>
+        <div onClick={handleSubmit} className="entry__submition ">
+          Submit
         </div>
       </form>
     </div>

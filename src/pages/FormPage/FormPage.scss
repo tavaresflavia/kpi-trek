@@ -1,18 +1,17 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
-.entry-container{
-    @include flex-justify(center);
+.entry-container {
+  @include flex-justify(center);
+  padding-inline:$mobile-margin;
 }
 .entry {
-    margin-block:2rem;
+  margin-block: 2rem;
   border-radius: 0.625rem;
   padding: $mobile-margin;
   width: 100%;
   box-shadow: 0 0 20px 8px #d0d0d0;
-  height: 30rem;
-  
+
   max-width: 30rem;
 
   @include tablet {
@@ -49,24 +48,18 @@
     &:focus {
       border: 2px solid $primary-text-color;
     }
-    &--textarea{
-        font-family: "Avenir";
+    &--textarea {
+      font-family: "Avenir";
     }
-    }
-  
-
-  &__submittion-wrap {
-    width: 100%;
-    height: 5rem;
-    border-bottom: 2px solid $outline-color;
   }
+
 
   &__submition {
     cursor: pointer;
     display: block;
     text-align: center;
     width: 100%;
-    margin-block:2rem;
+    margin-block: 2rem;
     padding-block: 0.5rem;
     text-decoration: none;
     font-weight: 600;
@@ -84,4 +77,5 @@
       opacity: 0.5;
       pointer-events: none;
     }
-  }}
+  }
+}
