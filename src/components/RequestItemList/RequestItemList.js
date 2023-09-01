@@ -15,7 +15,6 @@ const RequestItemList = ({ kpiId }) => {
     axios
       .get(`${SERVER_URL}/requests/kpi/${kpiId}?limit=3`)
       .then((res) => {
-        console.log(res.data)
         setRequests(res.data);
         setIsLoading(false);
       })

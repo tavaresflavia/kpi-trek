@@ -54,7 +54,6 @@ const KpiForm = ({userId}) => {
   };
 
   const handleSubmit = () => {
-    console.log(values)
     axios
       .post(`${SERVER_URL}/kpis`, { ...values, created_by: userId })
       .then((res) => {
@@ -106,12 +105,15 @@ const KpiForm = ({userId}) => {
             Unit
           </label>
           <input
-              className="kpi-form__input  kpi-form__input--small"
+              className="kpi-form__input "
               type="text"
               name="unit"
               value={values.unit}
               onChange={handleChange}
             />
+
+            <div  className="kpi-form__limits">
+            <div>
 
           <label className="kpi-form__label">
             Target
@@ -123,6 +125,8 @@ const KpiForm = ({userId}) => {
               value={values.target}
               onChange={handleChange}
             />
+            </div>
+            <div>
           <label className="kpi-form__label">
             Upper Limit
           </label>
@@ -133,6 +137,8 @@ const KpiForm = ({userId}) => {
               value={values.upper_limit}
               onChange={handleChange}
             />
+            </div>
+           <div>
           <label className="kpi-form__label">
             Lower Limit
           </label>
@@ -143,6 +149,8 @@ const KpiForm = ({userId}) => {
               value={values.lower_limit}
               onChange={handleChange}
             />
+            </div>
+            </div>
          {error && <p className="kpi-form__error">{error}</p>}
 
           <div className="kpi-form__buttons">

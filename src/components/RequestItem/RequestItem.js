@@ -3,7 +3,6 @@ import "./RequestItem.scss"
 
 
 const RequestItem = ({rpn, created_at, request_status, title}) => {
-  console.log("tt",title)
     return (
         <article className="kpi-requests">
           <div>

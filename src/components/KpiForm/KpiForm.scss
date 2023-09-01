@@ -60,13 +60,14 @@
   &__title{
     text-align: center;
     font-weight: 600;
+    margin-block:$mobile-margin;
   }
 
   &__label {
     font-weight: 600;
     margin-top: $mobile-margin;
     display: inline-block;
-    width:8rem;
+    width:7rem;
     vertical-align: top;
   
     @include tablet {
@@ -86,18 +87,15 @@
     background-color: rgba(219, 220, 216, 0.161);
     border: 2px solid #afafaf;
     outline: none;
+    width: 17.5rem;
     &:focus {
       border: 2px solid $primary-text-color;
     }
 
-    @include tablet {
-      width: 60%;
-    }
-
-    // &--small{
-    //   width:40%;
+    &--small{
+      width:5rem;
       
-    // }
+    }
 
     &--description {
       resize: none;
@@ -112,6 +110,12 @@
       }
     
     }
+  }
+
+  &__limits{
+    @include flex-justify(space-between);
+    margin-block:2rem;
+
   }
 
   &__buttons {
