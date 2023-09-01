@@ -5,46 +5,48 @@ import axios from "axios";
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const RequestForm = ({ userId, handleShowForm }) => {
+  const defaultValues = {
+    title: "",
+    description: "",
+    detection: 1,
+    severity: 1,
+    occurrence: 1,
+    assignee: "",
+    kpi: "",
+  };
+
   const [error, setError] = useState("");
   const [users, setUsers] = useState("");
   const [kpis, setKpis] = useState("");
-  const defaultValues = {title: "",
-  description:  "",
-   detection: 1, severity: 1, occurrence: 1, assignee:"", kpi:"" } 
-  const [values, setValues] = useState(defaultValues)
-
-  
+  const [values, setValues] = useState(defaultValues);
 
   useEffect(() => {
     axios
       .get(`${SERVER_URL}/users`)
       .then((res) => {
-       
         setUsers(res.data);
       })
       .then(() => {
-        axios.get(`${SERVER_URL}/kpis/${userId}`)
-        .then((res) => {
-          if (res.data.length === 0){
-          setError("Please create KPIs before sending requests");
+        axios.get(`${SERVER_URL}/kpis/${userId}`).then((res) => {
+          if (res.data.length === 0) {
+            setError("Please create KPIs before sending requests");
           }
           setKpis(res.data);
         });
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         setError(err.response.message);
       });
   }, [userId]);
 
-
   //HANDLE CHANGE
 
   const handleChange = (e) => {
-    const newValues ={...values}
+    const newValues = { ...values };
     newValues[e.target.name] = e.target.value;
-    setValues (newValues) 
-  }
+    setValues(newValues);
+  };
 
   const isTitleValid = () => {
     if (values.title && values.title.length < 5) {
@@ -65,14 +67,12 @@ const RequestForm = ({ userId, handleShowForm }) => {
       !values.description ||
       !values.assignee ||
       !isTitleValid() ||
-      !isDescriptionValid() 
+      !isDescriptionValid()
     ) {
       return false;
     }
     return true;
   };
-
-  
 
   const handleSubmit = () => {
     if (isFormValid()) {
@@ -91,19 +91,18 @@ const RequestForm = ({ userId, handleShowForm }) => {
         })
         .then(() => {
           handleShowForm();
-          setValues(defaultValues)
-          
+          setValues(defaultValues);
         })
-        .catch( (err) => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
   return (
     <div className="request">
       <div className="request__text-inputs">
-      {error && <p className="request__error">{error}</p>}
+        {error && <p className="request__error">{error}</p>}
         <label className="request__label">
           Request
           <input
@@ -134,14 +133,15 @@ const RequestForm = ({ userId, handleShowForm }) => {
             type="text"
             className={"request__input "}
             name="assignee"
-            value = {values.assignee}
+            value={values.assignee}
             onChange={handleChange}>
-            <option value="">Please select</option> 
+            <option value="">Please select</option>
             {users.length &&
               users.map((user) => {
-                return (<option key={user.id} value={user.id}>
-                    {user.username} |  {user.team} </option>
-
+                return (
+                  <option key={user.id} value={user.id}>
+                    {user.username} | {user.team}{" "}
+                  </option>
                 );
               })}
           </select>
@@ -153,12 +153,16 @@ const RequestForm = ({ userId, handleShowForm }) => {
             className={"request__input "}
             name="kpi"
             onChange={handleChange}
-            value={values.kpi}
-           >
-            <option value="">Please select</option> 
+            value={values.kpi}>
+            <option value="">Please select</option>
             {kpis.length &&
               kpis.map((kpi) => {
-                return <option key={kpi.id} value={kpi.id}  > {kpi.title}  </option>;
+                return (
+                  <option key={kpi.id} value={kpi.id}>
+                    {" "}
+                    {kpi.title}{" "}
+                  </option>
+                );
               })}
           </select>
         </label>

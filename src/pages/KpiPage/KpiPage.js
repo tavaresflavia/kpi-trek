@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import KpiForm from "../../components/KpiForm/KpiForm";
 import './KpiPage.scss';
 import { useNavigate } from "react-router-dom";
 import KpiList from "../../components/KpiList/KpiList";

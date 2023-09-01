@@ -3,15 +3,16 @@
 
 .request-card {
   font-size: 0.75rem;
-  width: 100%;
+  width: calc(100vw - 3rem);
   background-image: linear-gradient(to bottom right, #fff, #fbe8a646);
   padding: $mobile-margin;
   box-shadow: 0 0 20px 8px #d0d0d0;
   border-radius: 0.625rem;
-  margin: $mobile-margin 0;
+  margin: $mobile-margin;
  
 
   @include tablet {
+    width:100%;
     font-size: 1rem;
     padding: $tablet-desktop-margin;
     margin: $tablet-desktop-margin auto;
@@ -35,13 +36,21 @@
 
   &__subtitle {
     @include flex-justify(space-between);
+    flex-direction: column;
     width: 80%;
-    @include flex-justify(space-between);
     margin: $mobile-margin 0;
     font-weight: 600;
     color: $primary-text-color;
     @include tablet {
+      flex-direction: row;
       margin: $tablet-desktop-margin 0;
+    }
+  }
+
+  &__rpn{
+    margin-block:0.5rem;
+    @include tablet{
+      margin-block:0;
     }
   }
 
@@ -75,6 +84,7 @@
     font-weight: 600;
     @include flex-justify(space-between);
     align-items: center;
+    gap:0.5rem;
     margin-top: $mobile-margin;
     @include tablet {
       margin-top: $tablet-desktop-margin;
@@ -93,9 +103,7 @@
       display: none;
     }
   }
-  // &__value {
-  //   font-weight: 400;
-  // }
+
 }
 .update {
   @include flex-justify(space-between);
@@ -151,4 +159,5 @@
       pointer-events: none;
     }
   }
+
 }

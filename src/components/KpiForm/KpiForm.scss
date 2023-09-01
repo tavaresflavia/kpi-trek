@@ -2,15 +2,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .container{
-  width:100%;
-
+  width: calc(100vw - 2rem);
   @include flex-justify(center);
   align-items: center;
-  @include tablet {
+
     height: 33.3125rem;
-    width: 30rem;
     margin-block: 1rem;
-  }
+
 }
 
 .card {
@@ -120,11 +118,11 @@
 
   &__buttons {
     @include flex-justify(flex-end);
-    padding-top: $mobile-margin;
     align-self: flex-end;
   }
 
   &__cancel {
+    cursor: pointer;
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: #6c3030;

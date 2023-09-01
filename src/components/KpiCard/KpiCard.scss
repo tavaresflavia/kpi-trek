@@ -3,7 +3,7 @@
 
 .kpi-card {
   margin: $mobile-margin 0;
-  width: 100%;
+  width: calc(100vw - 2rem);
   border-radius: 0.625rem;
   padding: $mobile-margin 0;
   box-shadow: 0 0 20px 8px #d0d0d0;
@@ -18,7 +18,9 @@
     font-weight: 600;
   }
   &__graph {
+    position:relative;
     width: 100%;
+    margin:auto;
   }
   &__no-entries{
     @include flex-justify(center);
