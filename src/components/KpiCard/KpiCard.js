@@ -1,5 +1,4 @@
 import "./KpiCard.scss";
-import history from "../../data/history.json";
 import {
   Chart as ChartJS,
   LineElement,
@@ -10,7 +9,11 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import RequestItem from "../RequestItem/RequestItem";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import RequestItemList from "../RequestItemList/RequestItemList";
+
+const SERVER_URL = process.env.REACT_APP_API_URL;
 
 ChartJS.register(
   LineElement,
@@ -21,34 +24,51 @@ ChartJS.register(
   Legend
 );
 
-const KpiCard = () => {
-  const filteredLabels = history
-    .filter((el) => el["kpi_id"] === 1)
-    .map((el) =>{
-      return new Date(el["created_at"]).toLocaleDateString("en-us", {
-        month: "long",
-        day: "numeric",
-      })});
+const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
+  const [entries, setEntries] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(`${SERVER_URL}/kpis/entries/${id}`)
+      .then((res) => {
+        setEntries(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
-  const filteredData = history
-    .filter((el) => el["kpi_id"] === 1)
-    .map((el) => el.value);
-  const upperLimit = filteredData.map(() => 98);
-  const target = filteredData.map(() => 95);
-  const lowerLimit = filteredData.map(() => 90);
+  if (entries.length === 0) {
+    return (
+      <article className="kpi-card">
+        <h3 className="kpi-card__title">{`${title} (${unit})`} </h3>
+        <div className="kpi-card__no-entries">No Entries</div>
+      </article>
+    );
+  }
 
+  const filteredLabels = entries.map((entry) => {
+    return new Date(entry["created_at"]).toLocaleDateString("en-us", {
+      month: "short",
+      day: "numeric",
+    });
+  });
+  const filteredData = entries.map((entry) => entry.value);
+  const upperLimit = filteredData.map(() => upper_limit);
+  const targetLimit = filteredData.map(() => target);
+  const lowerLimit = filteredData.map(() => lower_limit);
+  const observations = entries.map((entry, i) => {
+    return [entry.observation, filteredLabels[i], entry.username];
+  });
 
   const data = {
     labels: filteredLabels,
     datasets: [
       {
-        label: "Values",
+        label: "Entries",
         data: filteredData,
         borderColor: "#7FD3E3",
         backgroundColor: "#7FD3E340",
-        // borderColor: "#A9A9A9",
-        // backgroundColor: "#A9A9A940",
         pointStyle: "circle",
         pointRadius: 5,
       },
@@ -58,15 +78,15 @@ const KpiCard = () => {
         borderColor: "#f4976cb5",
         backgroundColor: "#f4976c40",
         pointStyle: false,
-        borderDash: [10, 10]
+        borderDash: [10, 10],
       },
       {
         label: "Target",
-        data: target,
+        data: targetLimit,
         borderColor: "#9eebd7",
         backgroundColor: "#9eebd736",
         pointStyle: false,
-        borderDash: [10, 10]
+        borderDash: [10, 10],
       },
       {
         label: "Lower Limit",
@@ -74,31 +94,43 @@ const KpiCard = () => {
         borderColor: "#f4976cb5",
         backgroundColor: "#f4976c40",
         pointStyle: false,
-        borderDash: [10, 10]
+        borderDash: [10, 10],
       },
     ],
   };
 
   const options = {
-    legend:{
-      position: "bottom"
-    }
-  
-  };
+    legend: {
+      position: "bottom",
+    },
 
+    plugins: {
+      tooltip: {
+        callbacks: {
+          footer: function (context) {
+            if (context[0].datasetIndex === 0) {
+              let obs;
+              observations.forEach((el) => {
+                if (context[0].label === el[1]) {
+                  obs = [el[2],el[0]];
+                }
+              });
+              return obs;
+            }
+          },
+        },
+      },
+    },
+  };
 
   return (
     <article className="kpi-card">
       <div className="kpi__card-inner">
-        <h3 className="kpi-card__title">KPI name </h3>
+        <h3 className="kpi-card__title">{`${title} (${unit})`} </h3>
         <div className="kpi-card__graph">
-          <Line   data={data} options ={options}></Line>
+          <Line data={data} options={options}></Line>
         </div>
-        <RequestItem/>
-        <RequestItem/>
-        <RequestItem/>
-
-        
+        <RequestItemList kpiId={id} />
       </div>
 
       <div className="kpi__card-back"></div>

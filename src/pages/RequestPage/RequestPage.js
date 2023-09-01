@@ -5,7 +5,6 @@ import RequestList from "../../components/RequestList/RequestList.js";
 import Filters from "../../components/Filters/Filters.js";
 import RequestForm from "../../components/RequestForm/RequestForm.js";
 import plusIcon from "../../assets/icons/plusIcon.png";
-import RequestCard from "../../components/RequestCard/RequestCard";
 
 
 

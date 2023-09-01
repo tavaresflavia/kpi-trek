@@ -65,9 +65,10 @@
   &__label {
     font-weight: 600;
     margin-top: $mobile-margin;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    display: inline-block;
+    width:8rem;
+    vertical-align: top;
+  
     @include tablet {
       flex-direction: row;
       &:first-child {
@@ -78,10 +79,10 @@
 
   &__input {
     @include body-font;
+    display: inline-block;
     border-radius: 0.25rem;
+    margin-top: $mobile-margin;
     padding: 0.5rem;
-    margin-top: 0.25rem;
-
     background-color: rgba(219, 220, 216, 0.161);
     border: 2px solid #afafaf;
     outline: none;
@@ -90,9 +91,13 @@
     }
 
     @include tablet {
-      width: 70%;
-      margin: 0 1rem;
+      width: 60%;
     }
+
+    // &--small{
+    //   width:40%;
+      
+    // }
 
     &--description {
       resize: none;
@@ -105,6 +110,7 @@
       &:focus {
         border: 2px solid #6c3030;
       }
+    
     }
   }
 

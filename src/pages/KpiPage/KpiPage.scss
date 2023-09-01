@@ -3,6 +3,6 @@
 
 
 .kpi-page{
-    @include flex-justify(space-evenly);
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
 }

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import KpiCard from "../../components/KpiCard/KpiCard";
 import KpiForm from "../../components/KpiForm/KpiForm";
 import './KpiPage.scss';
 import { useNavigate } from "react-router-dom";
+import KpiList from "../../components/KpiList/KpiList";
 
 const KpiPage = ({userId}) => {
 
@@ -17,12 +17,8 @@ const KpiPage = ({userId}) => {
     )
     return (
         <div className="kpi-page">
-            <KpiCard/>
-            <KpiCard/>
-            <KpiCard/>
-            <KpiCard/>
-            <KpiCard/>
-            <KpiForm/>
+            <KpiList userId={userId}/>
+
             
         </div>
     );

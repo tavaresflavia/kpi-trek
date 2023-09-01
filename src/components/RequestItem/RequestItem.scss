@@ -1,38 +1,39 @@
-
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .kpi-requests {
-  
-    margin: $mobile-margin $mobile-margin 0;
-    @include tablet{
-      margin: $mobile-margin  0 0;
-    }
-
-    &__title {
-      font-weight: 400;
-      
-      padding: 0.5rem;
-      @include body-font;
-      border-top: 1px solid #afafaf63 ;
-      border-bottom: 1px solid #afafaf63  ;
-      border-radius: 0.25rem;
-      
-  
-    }
-      &__link {
-          text-decoration: none;
-      }
-    &__subtitle {
-      @include flex-justify(space-between);
-      margin-top: 0.25rem;
-      font-weight: 600;
-      color: $primary-text-color;
-  
-    }
+  margin: $mobile-margin $mobile-margin 0;
+  @include tablet {
+    margin: $mobile-margin 0 0;
   }
+
+  &__title {
+    font-weight: 400;
+
+    padding: 0.5rem;
+    @include body-font;
+    border-top: 1px solid #afafaf63;
+    border-bottom: 1px solid #afafaf63;
+    border-radius: 0.25rem;
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__subtitle {
+    @include flex-justify(space-between);
+    margin-top: 0.25rem;
+    font-weight: 600;
+    color: $primary-text-color;
+  }
+
+  &__date {
+    width: 7.5rem;
+  }
+  &__rpn {
   
-  // &__date
-  // &__rpn
-  // &__status
-  
+  width:5rem;
+  }
+  &__status { 
+    width:5rem; 
+  }
+}

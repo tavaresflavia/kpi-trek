@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.kpi-list{
+    display:flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width:94rem;
+    justify-content: center;
+
+    @include desktop{
+        justify-content: flex-start;
+    }
+}

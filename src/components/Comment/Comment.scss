@@ -9,11 +9,11 @@
   display: inline-flex;
   flex-direction: column;
   align-self: flex-start;
-  width:80%;
+  max-width:80%;
   
   box-shadow: 0 0 8px 4px #d0d0d080;
   @include tablet{
-    width:70%;
+    max-width:70%;
   }
 
   &:nth-child(2n) {
