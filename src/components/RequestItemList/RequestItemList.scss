@@ -1,0 +1,18 @@
+.item-list {
+  width: 100;
+  height: 16.25rem;
+
+  &--overflow {
+    overflow: hidden;
+    &:hover {
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 0.5em;
+        &-thumb {
+            background-color: lightgrey;
+            border-radius: 1.25rem;
+          }
+    }
+  }
+}
+}

@@ -1,10 +1,9 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./RequestItemList.scss"
+import "./RequestItemList.scss";
 import RequestItem from "../RequestItem/RequestItem";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
-
 
 const RequestItemList = ({ kpiId }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,22 +35,18 @@ const RequestItemList = ({ kpiId }) => {
   }
 
   return (
-    <div className="item-list">
+    <div className={"item-list " + (requests.length>3 ? "item-list--overflow":"")}>
       {requests.map((request) => {
-        
-      return <RequestItem 
-      key={request.id}
-      rpn = {request.rpn}
-      created_at = {request.created_at}
-      request_status = {request.request_status}
-      title = {request.title}
-      
-      />
-
-
-      }
-        
-      )}
+        return (
+          <RequestItem
+            key={request.id}
+            rpn={request.rpn}
+            created_at={request.created_at}
+            request_status={request.request_status}
+            title={request.title}
+          />
+        );
+      })}
     </div>
   );
 };
