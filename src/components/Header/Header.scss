@@ -31,7 +31,6 @@
 
     &__logo{    
         order:-1;
-        // width:100%;
         max-width: 100%;
         
 
@@ -40,6 +39,28 @@
             width:40%;
         }
 
+    }
+
+    &__logout{
+      
+        @include body-font;
+        cursor: pointer;
+        padding: 0.25rem 0.5rem;
+        
+        border: 1px solid $primary-text-color;
+        border-radius:1.25rem;
+        margin-top:$mobile-margin;
+        @include tablet{
+            margin-top:0;
+            font-weight: 600;
+            padding: 0.5rem $mobile-margin;
+        }
+        @include desktop {
+       
+            position:absolute;
+            right: 20px;
+    
+        }
     }
 }
 

@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .request {
-  width: calc(100vw - 2rem);
+  width: calc(100vw - 3rem);
   font-size: 0.875rem;
   margin: $mobile-margin;
   padding: $mobile-margin;
@@ -11,8 +11,11 @@
   box-shadow: 0 0 20px 8px #d0d0d0;
   border-radius: 0.625rem;
   @include tablet {
+    width:100%;
     font-size: 1rem;
     padding: $tablet-desktop-margin;
+    margin: $tablet-desktop-margin auto;
+
     flex-direction: row;
     justify-content: space-between;
   }
