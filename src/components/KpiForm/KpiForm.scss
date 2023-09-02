@@ -2,7 +2,6 @@
 @use "../../styles/partials/mixins" as *;
 
 .container{
-  width: calc(100vw - 2rem);
   @include flex-justify(center);
   align-items: center;
 

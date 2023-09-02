@@ -69,7 +69,7 @@ const KpiForm = ({userId}) => {
 
   return (
     <div className="container">
-      <div className={"card " + (isFlipped && "card--flipped")}>
+      <div className={"card " + (isFlipped ? "card--flipped":"")}>
         <div className="card__front">
           <h3 className="card__title">Add new KPI</h3>
           <img src={plusIcon} alt="add KPI" onClick={handleFlip} />
