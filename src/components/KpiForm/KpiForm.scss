@@ -94,7 +94,7 @@
     }
 
     &--small{
-      width:5rem;
+      width:5.5938rem;
       
     }
 
@@ -151,6 +151,7 @@
   }
   &__submition {
     @extend .kpi-form__cancel;
+    margin-right: 0;
     color: $primary-text-color;
     border-radius: 4px;
     border: 2px solid $primary-text-color;
