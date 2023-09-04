@@ -68,10 +68,10 @@ function App() {
           
           <Route path="/" element = {<HomePage isLoggedIn ={isLoggedIn}/>}/>
           <Route path = '/login' element = {<Login changeLogin={changeLogin} isLoggedIn ={isLoggedIn} />}/>
-          <Route path = '/signup' element = {<SignUp changeLogin={changeLogin} isLoggedIn ={isLoggedIn} />}/>
-
+          <Route path = '/signup' element = {<SignUp changeLogin={changeLogin} isLoggedIn ={isLoggedIn} />}/> 
           <Route path="/kpi" element = {<KpiPage userId={user.id}/>} />
           <Route path="/request" element = {<RequestPage userId={user.id}/>}/>
+          <Route path="/request/:requestId" element = {<RequestPage userId={user.id}/>}/>
           <Route path="/form" element = {<FormPage userId={user.id}/>} />
           <Route path="*" element = {<NotFound/>} />
           </Routes>

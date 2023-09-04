@@ -40,6 +40,7 @@ const RequestItemList = ({ kpiId }) => {
         return (
           <RequestItem
             key={request.id}
+            id ={request.id}
             rpn={request.rpn}
             created_at={request.created_at}
             request_status={request.request_status}

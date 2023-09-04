@@ -90,7 +90,7 @@ const HomePage = ({ isLoggedIn }) => {
                 alt="KPI Form"></img>
               <div>
                 <svg
-                  class="animation__rectangles"
+                  className="animation__rectangles"
                   width="288"
                   height="164"
                   viewBox="0 0 288 164"
@@ -103,7 +103,7 @@ const HomePage = ({ isLoggedIn }) => {
                     height="47"
                     rx="13.5"
                     stroke="#303C6C"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <rect
                     x="1.5"
@@ -112,7 +112,7 @@ const HomePage = ({ isLoggedIn }) => {
                     height="47"
                     rx="13.5"
                     stroke="#303C6C"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <rect
                     x="1.5"
@@ -121,7 +121,7 @@ const HomePage = ({ isLoggedIn }) => {
                     height="47"
                     rx="13.5"
                     stroke="#303C6C"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </svg>
 

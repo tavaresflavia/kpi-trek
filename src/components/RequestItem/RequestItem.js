@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import "./RequestItem.scss"
 
 
-const RequestItem = ({rpn, created_at, request_status, title}) => {
+const RequestItem = ({id,rpn, created_at, request_status, title}) => {
     return (
         <article className="kpi-requests">
           <div>
-            <Link className="kpi-requests__link">
+            <Link to={`/request/${id}`} className="kpi-requests__link">
               <div className="kpi-requests__title">
                 <h3 className="kpi-requests__request">
                   {title}
