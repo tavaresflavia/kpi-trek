@@ -23,7 +23,7 @@ const RequestPage = ({userId}) => {
   const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:""}
 
   const [showForm, setShowForm] = useState(false);
-  const [checkedValues, setCheckedValues]= useState(defaultValues);
+  const [checkedValues, setCheckedValues]= useState(defaultValues); 
   const [selectedStatus, setSelectedStatus] = useState([]);
 
   const handleShowForm = () => {
@@ -37,15 +37,24 @@ const RequestPage = ({userId}) => {
   } 
   const handleFilterStatus = (e) =>{
     let newSelectedStatus =[];
-    if (selectedStatus.includes(e.target.value)){
+    let newcheckedValues ={ ...checkedValues};
+
+    if (selectedStatus.includes(e.target.value) && selectedStatus.length === 1 ){
+      newSelectedStatus=[...defaultValues.filterStatus]
+      newcheckedValues.filterStatus = newSelectedStatus;
+      setSelectedStatus([]);
+    }else if (selectedStatus.includes(e.target.value)){
       newSelectedStatus = [...selectedStatus];
       newSelectedStatus.splice(selectedStatus.indexOf(e.target.value),1);
+      newcheckedValues.filterStatus = newSelectedStatus;
+      setSelectedStatus(newSelectedStatus);
     }else{
-      newSelectedStatus = [...selectedStatus, e.target.value];}
-    const newcheckedValues = { ...checkedValues};
-    newcheckedValues.filterStatus = newSelectedStatus;
-    setSelectedStatus(newSelectedStatus);
-    setCheckedValues(newcheckedValues);
+      newSelectedStatus = [...selectedStatus, e.target.value];
+      newcheckedValues.filterStatus = newSelectedStatus;
+      setSelectedStatus(newSelectedStatus);
+    }
+    
+      setCheckedValues(newcheckedValues);
   } 
   const handleFilterAssign = (e) =>{
     const newcheckedValues = { ...checkedValues};

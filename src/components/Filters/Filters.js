@@ -60,7 +60,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
               id="assigned"
               type="radio"
               className="filters__assig-option"
-              value="assignedTo"
+              value="assigned_to"
               name="assignment"
               onClick={handleFilterAssign}
             />
@@ -72,7 +72,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
               id="created"
               type="radio"
               className="filters__assig-option"
-              value="createdBy"
+              value="created_by"
               name="assignment"
               onClick={handleFilterAssign}
             />

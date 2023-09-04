@@ -12,12 +12,11 @@ const RequestList = ({ userId, checkedValues, showForm }) => {
   const { filterStatus, filterAssign, sort } = checkedValues;
 
   useEffect(() => {
-    if (filterAssign) {
       axios
         .get(
-          `${SERVER_URL}/requests/${filterAssign}/${userId}?sort=${
+          `${SERVER_URL}/requests${filterAssign ? "/assignment":""}/${userId}?sort=${
             sort === "rpn" ? "rpn" : "created_at"
-          }`
+          }${filterAssign ? "&assign=" + filterAssign: ""}`
         )
         .then((res) => {
           const newRequests = res.data.filter((request) =>
@@ -33,26 +32,8 @@ const RequestList = ({ userId, checkedValues, showForm }) => {
           }
           setIsLoading(false);
         });
-    } else {
-      axios
-        .get(`${SERVER_URL}/requests/${userId}?sort=${
-          sort === "rpn" ? "rpn" : "created_at"}`)
-        .then((res) => {
-          const newRequests = res.data.filter((request) =>
-            filterStatus.includes(request.request_status)
-          );
-          setRequests(newRequests);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          if (err.response.status === 404) {
-            setRequests([]);
-            setError(err.response.message);
-          }
-          setIsLoading(false);
-        });
     }
-  }, [userId, filterAssign, sort, filterStatus, showForm]);
+  , [userId, filterAssign, sort, filterStatus, showForm]);
 
   if (isLoading) {
     return <p> Loading...</p>;
