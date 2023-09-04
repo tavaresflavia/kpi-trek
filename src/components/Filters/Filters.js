@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Filters.scss";
 import filterIcon from "../../assets/icons/filterIcon.png";
 import arrowBackIcon from "../../assets/icons/arrowBack.png";
 
 const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
+  
+  const { requestId } = useParams();
+  const navigate = useNavigate();
+  
   const [showFilters, setShowFilters] = useState(false);
+  
   const handleFilterExpand = () => {
     const newShowFilters = !showFilters;
     setShowFilters(newShowFilters);
+    if (requestId){
+      navigate('/request')
+    }
   };
+
   const statusList = ["Open", "Pending", "Resolved", "Closed"];
 
 
