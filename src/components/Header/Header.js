@@ -32,7 +32,6 @@ const Header = ({ isLoggedIn }) => {
         </ul>
       )}
       <img className="nav__logo" src={logo} alt="KPITrek logo" />
-      
       {isLoggedIn && (
         <ul className="nav__list">
           <NavLink to="/KPI" className="nav__link">

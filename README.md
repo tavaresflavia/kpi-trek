@@ -1,6 +1,6 @@
 ## KPI Trek
 
-**KPI Trek is a website designed to help your team to manage Key Performance Indicators (KPIs) and collaborate seamlessly through ticket-based requests.**  
+**KPI Trek is a website designed to help your team in managing Key Performance Indicators (KPIs) and collaborating seamlessly through ticket-based requests platform.**  
 
 ![mockup](/src/assets/images/mockup.png)  
 

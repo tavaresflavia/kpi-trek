@@ -5,17 +5,17 @@
     @include flex-justify(center);
     flex-direction: column;
     max-width: 25rem;
-    
     margin: 0 auto;
+    align-items: center;
 
     @include tablet{
         font-size: 1.5rem;
         max-width: 62.5rem;
-    }
-    align-items: center;
-    @include tablet{
         flex-direction: row;
         align-items: center;
+    }
+    @include desktop{
+        width:$desktop-width;
     }
 
     &__link{
@@ -23,22 +23,18 @@
         text-decoration: none;
         margin: $mobile-margin;
         text-align: left;
-        @include tablet{
+        @include desktop{
         margin: $tablet-desktop-margin;
         }
-
     }
 
     &__logo{    
         order:-1;
         max-width: 100%;
-        
-
         @include tablet{
             order:0;
             width:40%;
         }
-
     }
 
     &__logout{
@@ -55,16 +51,9 @@
             font-weight: 600;
             padding: 0.5rem $mobile-margin;
         }
-        @include desktop {
-       
-            position:absolute;
-            right: 20px;
-    
-        }
     }
 }
 
 .active{
     border-bottom:  2px solid $primary-text-color;
-
 }

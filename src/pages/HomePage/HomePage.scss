@@ -12,8 +12,7 @@
   }
 }
 .hero {
-
-  @include flex-justify(center);
+  display: flex;
   flex-direction: column;
   align-items: center;
 
@@ -31,7 +30,6 @@
   }
 
   &__content {
-    align-self:flex-start;
     animation: fade-right 1s;
     margin-bottom: $mobile-margin;
     max-width: 33.75rem;
@@ -99,6 +97,7 @@
 .how {
   &__feature {
     @extend .home-page;
+    padding:0;
     &--comment{
       transform: translateY(-6.5rem);
       @include tablet{
