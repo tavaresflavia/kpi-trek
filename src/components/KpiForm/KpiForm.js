@@ -5,7 +5,7 @@ import plusIcon from "../../assets/icons/plusIcon.png";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-const KpiForm = ({userId}) => {
+const KpiForm = ({userId,setReload}) => {
   const defaultValues = {title:"",
     description:"",
     unit :"",
@@ -61,6 +61,7 @@ const KpiForm = ({userId}) => {
         handleFlip();
         setValues(defaultValues);
         setError("");
+        setReload(true);
       })
       .catch((err) => {
         setError(err.response.data);

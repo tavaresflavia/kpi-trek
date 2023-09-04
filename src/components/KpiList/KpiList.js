@@ -10,6 +10,7 @@ const KpiList = ({userId}) => {
     const [kpis,setKpis] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
+    const [reload, setReload] = useState(false);
 
 
     useEffect(() => {
@@ -25,7 +26,7 @@ const KpiList = ({userId}) => {
         }
         )
     }
-        , [userId])
+        , [userId,reload])
         
         if(isLoading){
             return <p>Loading</p>
@@ -50,7 +51,7 @@ const KpiList = ({userId}) => {
                 />}
             )}
             
-            <KpiForm userId={userId}/>  
+            <KpiForm userId={userId} setReload={setReload}/>  
         </div>
     );
 };
