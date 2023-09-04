@@ -26,7 +26,7 @@ const FormPage = ({ userId }) => {
       .get(`${SERVER_URL}/kpis/${userId}`)
       .then((res) => {
         if (res.data.length === 0) {
-          setError("Please create KPIs before sending requests");
+          setError("Please create KPIs before entering data");
         }
         setKpis(res.data);
       })
