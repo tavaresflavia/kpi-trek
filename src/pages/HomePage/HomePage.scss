@@ -20,6 +20,9 @@
     width: 100%;
     flex-direction: row;
   }
+  @include desktop{
+    height: 82vh;
+  }
   &__title {
     font-weight: 600;
     @include tablet {
