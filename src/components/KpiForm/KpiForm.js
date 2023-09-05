@@ -5,16 +5,47 @@ import plusIcon from "../../assets/icons/plusIcon.png";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-const KpiForm = ({userId,setReload}) => {
+const KpiForm = ({userId,setReload,reload}) => {
   const defaultValues = {title:"",
     description:"",
-    unit :"",
-    target:"",
+    unit :""}
+  const defaultLimits ={ target:"",
     upper_limit:"",
     lower_limit:""}
   const [values, setValues] = useState(defaultValues);
   const [isFlipped, setIsFlipped] = useState(false);
   const [error, setError] = useState("");
+  const [limits,setLimits] = useState(defaultLimits);
+
+//========== VALIDATION =============
+
+    const isNameValid = () => {
+      if (values.title && values.title.length < 5) {
+        return false;
+      }
+      return true;
+    };
+  
+    const isDescriptionValid = () => {
+      if (values.description && values.description.length < 15) {
+        return false;
+      }
+      return true;
+    };
+  
+    const isFormValid = () => {
+      if (
+        !values.title ||
+        !values.description ||
+        !isNameValid() ||
+        !isDescriptionValid()
+      ) {
+        return false;
+      }
+      return true;
+    };
+
+//========== HANDLERS =============
 
   const handleFlip = () => {
     const changedFlip = !isFlipped;
@@ -27,41 +58,27 @@ const KpiForm = ({userId,setReload}) => {
     setValues(newValues);
   };
 
-  const isNameValid = () => {
-    if (values.title && values.title.length < 5) {
-      return false;
-    }
-    return true;
-  };
-
-  const isDescriptionValid = () => {
-    if (values.description && values.description.length < 15) {
-      return false;
-    }
-    return true;
-  };
-
-  const isFormValid = () => {
-    if (
-      !values.title ||
-      !values.description ||
-      !isNameValid() ||
-      !isDescriptionValid()
-    ) {
-      return false;
-    }
-    return true;
+  const handleLimitChange = (e) => {
+    const newLimits = { ...limits };
+    newLimits[e.target.name] = e.target.value;
+    setLimits(newLimits);
   };
 
   const handleSubmit = () => {
+    const currentLimits = {};
+    for (const [key, value] of Object.entries(limits)) {
+      if(value){
+        currentLimits[key] = value;}
+    }
     axios
-      .post(`${SERVER_URL}/kpis`, { ...values, created_by: userId })
-      .then((res) => {
-        console.log(res);
+      .post(`${SERVER_URL}/kpis`, { ...values, ...currentLimits, created_by: userId })
+      .then(() => {
         handleFlip();
         setValues(defaultValues);
+        setLimits(defaultLimits);
         setError("");
-        setReload(true);
+        const changeReload = !reload;
+        setReload(changeReload);
       })
       .catch((err) => {
         setError(err.response.data);
@@ -129,8 +146,8 @@ const KpiForm = ({userId,setReload}) => {
               className="kpi-form__input kpi-form__input--small"
               type="number"
               name="target"
-              value={values.target}
-              onChange={handleChange}
+              value={limits.target}
+              onChange={handleLimitChange}
             />
             </div>
             <div className="kpi-form__limit">
@@ -141,8 +158,8 @@ const KpiForm = ({userId,setReload}) => {
               className="kpi-form__input kpi-form__input--small"
               type="number"
               name="upper_limit"
-              value={values.upper_limit}
-              onChange={handleChange}
+              value={limits.upper_limit}
+              onChange={handleLimitChange}
             />
             </div>
            <div className="kpi-form__limit">
@@ -153,8 +170,8 @@ const KpiForm = ({userId,setReload}) => {
               className="kpi-form__input kpi-form__input--small"
               type="number"
               name="lower_limit"
-              value={values.lower_limit}
-              onChange={handleChange}
+              value={limits.lower_limit}
+              onChange={handleLimitChange}
             />
             </div>
             </div>

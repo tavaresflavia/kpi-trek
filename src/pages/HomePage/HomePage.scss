@@ -17,8 +17,6 @@
   align-items: center;
 
   @include tablet {
-  height: 80vh;
-
     width: 100%;
     flex-direction: row;
   }
@@ -75,7 +73,7 @@
 @keyframes fade-up {
   0% {
     opacity: 0;
-    transform: translateY(200px) scale(0.9);
+    transform: translateY(100px) scale(0.9);
   }
   100% {
     opacity: 1;
