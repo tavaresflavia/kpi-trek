@@ -5,6 +5,8 @@ import axios from "axios";
 import expandIcon from "../../assets/icons/expandIcon.png";
 import expandLessIcon from "../../assets/icons/expandLessIcon.png";
 import Comment from "../Comment/Comment";
+import errorIcon from "../../assets/icons/error.svg";
+
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
@@ -154,7 +156,6 @@ const RequestCard = ({
             name="comment"
             value={comment}
             onChange={handleChangeComment}></textarea>
-
           <button
             onClick={handleCommentSubmit}
             className={
@@ -165,6 +166,7 @@ const RequestCard = ({
           </button>
         </div>
 
+        {comment && comment.length < 5 ? <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">Please enter at least 5 characters.</span></div> : ""}
         {!commentList.length && <div>Add the first comment.</div>}
 
         {!!commentList.length &&

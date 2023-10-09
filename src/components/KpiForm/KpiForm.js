@@ -2,6 +2,7 @@ import "./KpiForm.scss";
 import { useState } from "react";
 import axios from "axios";
 import plusIcon from "../../assets/icons/plusIcon.png";
+import errorIcon from "../../assets/icons/error.svg";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
@@ -16,6 +17,7 @@ const KpiForm = ({userId,setReload,reload}) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [error, setError] = useState("");
   const [limits,setLimits] = useState(defaultLimits);
+  const [formValidity, setFormValidity] = useState(true);
 
 //========== VALIDATION =============
 
@@ -56,6 +58,7 @@ const KpiForm = ({userId,setReload,reload}) => {
     const newValues = { ...values };
     newValues[e.target.name] = e.target.value;
     setValues(newValues);
+    setFormValidity(isFormValid());
   };
 
   const handleLimitChange = (e) => {
@@ -175,7 +178,8 @@ const KpiForm = ({userId,setReload,reload}) => {
             />
             </div>
             </div>
-         {error && <p className="kpi-form__error">{error}</p>}
+        {formValidity ? "":<div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text"> Name and Description are required.</span></div> }
+         {!!error && <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">{error}</span></div>}
 
           <div className="kpi-form__buttons">
             <div className="kpi-form__cancel " onClick={handleFlip}>

@@ -31,7 +31,7 @@
   }
 
   &__content {
-    animation: fade-right 1s;
+    animation: fade-right 0.5s;
     margin-bottom: $mobile-margin;
     max-width: 33.75rem;
     @include tablet {
@@ -61,8 +61,8 @@
     }
   }
   &__img {
-    animation-delay: 0.5s;
-    animation: fade-up ease-in 1s;
+    animation-delay: 0.25s;
+    animation: fade-up ease-out 0.5s;
     width:100%;
 
     @include tablet {

@@ -110,7 +110,7 @@ const Login = ({changeLogin, handleSignUp}) => {
 
         <a
           className="login__google-btn"
-          href="http://localhost:5050/auth/google">
+          href={`${SERVER_URL}/auth/google`}>
           <img className="login__google" src={googleIcon} alt="google icon" />
           Log in with Google
         </a>

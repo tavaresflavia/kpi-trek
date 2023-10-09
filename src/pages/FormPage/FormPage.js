@@ -2,9 +2,12 @@ import "./FormPage.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import errorIcon from "../../assets/icons/error.svg";
+ 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const FormPage = ({ userId }) => {
+
   const defaultValues = {
     value: "",
     kpi_id: "",
@@ -93,7 +96,7 @@ const FormPage = ({ userId }) => {
             onChange={handleChange}
           />
         </label>
-        {!!error && <p className="entry__error">{error}</p>}
+        {!!error && <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">KPI and value fields are required.</span></div>}
         <div onClick={handleSubmit} className="entry__submition ">
           Submit
         </div>

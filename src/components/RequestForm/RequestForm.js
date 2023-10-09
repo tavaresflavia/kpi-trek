@@ -1,6 +1,7 @@
 import "./RequestForm.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import errorIcon from "../../assets/icons/error.svg";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
@@ -19,6 +20,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
   const [users, setUsers] = useState("");
   const [kpis, setKpis] = useState("");
   const [values, setValues] = useState(defaultValues);
+  const [formValidity, setFormValidity] = useState(true);
 
   useEffect(() => {
     axios
@@ -46,6 +48,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
     const newValues = { ...values };
     newValues[e.target.name] = e.target.value;
     setValues(newValues);
+    setFormValidity(isFormValid());
+
   };
 
   const isTitleValid = () => {
@@ -102,7 +106,6 @@ const RequestForm = ({ userId, handleShowForm }) => {
   return (
     <div className="request">
       <div className="request__text-inputs">
-        {error && <p className="request__error">{error}</p>}
         <label className="request__label">
           Request
           <input
@@ -166,6 +169,9 @@ const RequestForm = ({ userId, handleShowForm }) => {
               })}
           </select>
         </label>
+        
+        {formValidity ? "":<div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text"> All fields are required.</span></div> }
+         {!!error && <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">{error}</span></div>}
       </div>
       <div className="request__rpn-inputs">
         <div className="request__rpn-wrapper">

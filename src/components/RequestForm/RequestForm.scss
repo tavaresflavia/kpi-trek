@@ -21,7 +21,7 @@
   }
 
   &__error{
-    color:#6c3030;
+    color:$invalid-color;
     font-weight: 600;
   }
 
@@ -82,9 +82,9 @@
     }
 
     &--invalid {
-      border: 2px solid #6c3030;
+      border: 2px solid $invalid-color;
       &:focus {
-        border: 2px solid #6c3030;
+        border: 2px solid $invalid-color;
       }
     }
   }
@@ -139,7 +139,7 @@
   &__cancel {
     padding: 0.5rem 1rem;
     text-decoration: none;
-    color: #6c3030;
+    color: $invalid-color;
     font-weight: 600;
     margin: 0 0.5rem;
     cursor: pointer;
