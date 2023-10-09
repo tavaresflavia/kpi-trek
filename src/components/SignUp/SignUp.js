@@ -197,7 +197,7 @@ const Login = () => {
 
         <a
           className="signup__google-btn"
-          href="http://localhost:5050/auth/google">
+          href={`${SERVER_URL}/auth/google`}>
           <img className="signup__google" src={googleIcon} alt="google icon" />
           Sign up with Google
         </a>
