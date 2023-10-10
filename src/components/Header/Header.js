@@ -31,7 +31,7 @@ const Header = ({ isLoggedIn }) => {
           </NavLink>
         </ul>
       )}
-      <img className="nav__logo" src={logo} alt="KPITrek logo" />
+      <a className="nav__logo-wrap" href="/"> <img className="nav__logo" src={logo} alt="KPITrek logo" /></a>
       {isLoggedIn && (
         <ul className="nav__list">
           <NavLink to="/KPI" className="nav__link">

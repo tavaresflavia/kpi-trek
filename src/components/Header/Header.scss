@@ -1,59 +1,64 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.nav{
-    @include flex-justify(center);
-    flex-direction: column;
-    max-width: 25rem;
-    margin: 0 auto;
+.nav {
+  @include flex-justify(center);
+  flex-direction: column;
+  max-width: 25rem;
+  margin: 0 auto;
+  align-items: center;
+
+  @include tablet {
+    font-size: 1.5rem;
+    max-width: 62.5rem;
+    flex-direction: row;
     align-items: center;
+  }
+  @include desktop {
+    width: $desktop-width;
+  }
 
-    @include tablet{
-        font-size: 1.5rem;
-        max-width: 62.5rem;
-        flex-direction: row;
-        align-items: center;
+  &__link {
+    color: $primary-text-color;
+    text-decoration: none;
+    margin: $mobile-margin;
+    text-align: left;
+    @include desktop {
+      margin: $tablet-desktop-margin;
     }
-    @include desktop{
-        width:$desktop-width;
-    }
+  }
 
-    &__link{
-        color: $primary-text-color;
-        text-decoration: none;
-        margin: $mobile-margin;
-        text-align: left;
-        @include desktop{
-        margin: $tablet-desktop-margin;
-        }
+  &__logo-wrap {
+    text-decoration: none;
+    order: -1;
+    max-width: 100%;
+    @include tablet {
+      order: 0;
+      width: 40%;
     }
+  }
 
-    &__logo{    
-        order:-1;
-        max-width: 100%;
-        @include tablet{
-            order:0;
-            width:40%;
-        }
-    }
+  &__logo {
+    width:100%;
 
-    &__logout{
-      
-        @include body-font;
-        cursor: pointer;
-        padding: 0.25rem 0.5rem;
-        
-        border: 1px solid $primary-text-color;
-        border-radius:1.25rem;
-        margin-top:$mobile-margin;
-        @include tablet{
-            margin-top:0;
-            font-weight: 600;
-            padding: 0.5rem $mobile-margin;
-        }
+  }
+
+  &__logout {
+    @include body-font;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+
+    border: 1px solid $primary-text-color;
+    border-radius: 1.25rem;
+    margin-top: $mobile-margin;
+    @include tablet {
+      margin-top: 0;
+      font-weight: 600;
+      padding: 0.5rem $mobile-margin;
     }
+  }
 }
 
-.active{
-    border-bottom:  2px solid $primary-text-color;
+.active {
+  border-bottom: 2px solid $primary-text-color;
 }
