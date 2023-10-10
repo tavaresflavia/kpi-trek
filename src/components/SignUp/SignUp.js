@@ -2,6 +2,7 @@ import "./SignUp.scss";
 import { useState } from "react";
 import axios from "axios";
 import googleIcon from "../../assets/icons/google.png";
+import { useNavigate } from "react-router-dom";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
@@ -13,7 +14,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [team, setTeam] = useState("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChangeTeam = (e) => {
     setTeam(e.target.value);
@@ -95,7 +96,7 @@ const Login = () => {
           team:team
         })
         .then(() => {
-          // navigate("/");
+          navigate("/");
         })
         .catch((error) => {
           setError(true);
