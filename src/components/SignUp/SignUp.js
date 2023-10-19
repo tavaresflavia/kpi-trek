@@ -99,8 +99,8 @@ const Login = () => {
           navigate("/");
         })
         .catch((error) => {
-          setError(true);
-          console.log(error);
+          setError(error.response.data);
+          console.log(error.response.data);
         });
     }
   };
@@ -192,7 +192,7 @@ const Login = () => {
 
         {error && (
           <div className="signup__message">
-            Sign up failed. Please, try later.
+            Sign up failed. {error ? error : "Please, try later."}
           </div>
         )}
 
