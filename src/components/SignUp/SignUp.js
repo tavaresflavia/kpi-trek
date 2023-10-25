@@ -96,7 +96,7 @@ const Login = () => {
           team:team
         })
         .then(() => {
-          navigate("/");
+          navigate("/login");
         })
         .catch((error) => {
           setError(error.response.data);

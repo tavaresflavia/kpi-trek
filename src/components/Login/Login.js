@@ -5,7 +5,7 @@ import googleIcon from "../../assets/icons/google.png";
 import { Link, useNavigate } from "react-router-dom";
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-const Login = ({changeLogin, handleSignUp}) => {
+const Login = ({ changeLogin, handleSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,36 +32,33 @@ const Login = ({changeLogin, handleSignUp}) => {
     return true;
   };
   const isFormValid = () => {
-    if (!email || !password ||!isEmailValid() || !isPasswordValid()) {
+    if (!email || !password || !isEmailValid() || !isPasswordValid()) {
       return false;
     }
     return true;
   };
 
   const handleSubmit = () => {
-    if (isFormValid()){
-
-    axios.post(`${SERVER_URL}/jwt-auth/login`, {
-        email: email,
-        password: password
-    })
+    if (isFormValid()) {
+      axios
+        .post(`${SERVER_URL}/jwt-auth/login`, {
+          email: email,
+          password: password,
+        })
         .then((response) => {
-            sessionStorage.setItem("token", response.data.token);
-            changeLogin();
-            navigate("/");
+          sessionStorage.setItem("token", response.data.token);
+          changeLogin();
+          navigate("/");
         })
         .catch((error) => {
-            setError(error);
-            console.log(error)
+          setError(error);
+          console.log(error);
         });
-      }
-};
-
-
+    }
+  };
 
   return (
     <div className="login-page">
-
       <div className="login">
         <h3 className="login__title">Log in</h3>
         <label className="login__label">
@@ -93,7 +90,15 @@ const Login = ({changeLogin, handleSignUp}) => {
         </label>
         <div className="login__submittion-wrap">
           <div
-                  onClick={handleSubmit}
+            className="login__submition "
+            onClick={() => {
+              setEmail("user@test.com");
+              setPassword("user123");
+            }}>
+            Login with test user
+          </div>
+          <div
+            onClick={handleSubmit}
             href="/"
             className={
               "login__submition " +
@@ -104,26 +109,19 @@ const Login = ({changeLogin, handleSignUp}) => {
         </div>
         {error && (
           <div className="login__message">
-            Log in failed. {error.response.data  ? error.response.data : " Please, try later. "}
+            Log in failed.{" "}
+            {error.response.data ? error.response.data : " Please, try later. "}
           </div>
         )}
 
-        <a
-          className="login__google-btn"
-          href={`${SERVER_URL}/auth/google`}>
+        <a className="login__google-btn" href={`${SERVER_URL}/auth/google`}>
           <img className="login__google" src={googleIcon} alt="google icon" />
           Log in with Google
         </a>
-        <Link
-            to="/signup"
-            onClick={handleSignUp}
-            className={
-              "login__sign-up"
-            }>
-            Sign up 
-          </Link>
+        <Link to="/signup" onClick={handleSignUp} className={"login__sign-up"}>
+          Sign up
+        </Link>
       </div>
-      
     </div>
   );
 };
