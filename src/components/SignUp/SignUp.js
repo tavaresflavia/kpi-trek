@@ -179,12 +179,12 @@ const Login = () => {
             onChange={handleChangeTeam}
           />
         </label>
-        <div className="signup__submittion-wrap">
+        <div className="signup__submission-wrap">
           <div
             onClick={handleSubmit}
             className={
-              "signup__submition " +
-              (isFormValid() ? "" : "signup__submition--disabled")
+              "signup__submission " +
+              (isFormValid() ? "" : "signup__submission--disabled")
             }>
             Sign up
           </div>

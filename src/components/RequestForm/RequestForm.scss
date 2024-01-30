@@ -131,9 +131,6 @@
     @include flex-justify(space-between);
     padding-top: $mobile-margin;
     align-self: flex-end;
-    @include tablet {
-      // padding-top:4rem;
-    }
   }
 
   &__cancel {
@@ -147,7 +144,7 @@
       text-decoration: 2px underline;
     }
   }
-  &__submition {
+  &__submission {
     @extend .request__cancel;
     color: $primary-text-color;
     border-radius: 4px;

@@ -188,8 +188,8 @@ const KpiForm = ({userId,setReload,reload}) => {
             <div
               onClick={handleSubmit}
               className={
-                "kpi-form__submition " +
-                (isFormValid() ? "" : "kpi-form__submition--disabled")
+                "kpi-form__submission " +
+                (isFormValid() ? "" : "kpi-form__submission--disabled")
               }>
               Submit
             </div>

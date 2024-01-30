@@ -88,9 +88,9 @@ const Login = ({ changeLogin, handleSignUp }) => {
             onChange={handleChangePassword}
           />
         </label>
-        <div className="login__submittion-wrap">
+        <div className="login__submission-wrap">
           <div
-            className="login__submition "
+            className="login__submission "
             onClick={() => {
               setEmail("user@test.com");
               setPassword("user123");
@@ -101,8 +101,8 @@ const Login = ({ changeLogin, handleSignUp }) => {
             onClick={handleSubmit}
             href="/"
             className={
-              "login__submition " +
-              (isFormValid() ? "" : "login__submition--disabled")
+              "login__submission " +
+              (isFormValid() ? "" : "login__submission--disabled")
             }>
             Log in
           </div>

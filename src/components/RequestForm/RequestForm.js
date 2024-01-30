@@ -227,8 +227,8 @@ const RequestForm = ({ userId, handleShowForm }) => {
           </div>
           <div
             className={
-              "request__submition " +
-              (isFormValid() ? "" : "request__submition--disabled")
+              "request__submission " +
+              (isFormValid() ? "" : "request__submission--disabled")
             }
             onClick={handleSubmit}>
             Submit

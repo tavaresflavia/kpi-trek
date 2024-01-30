@@ -1,16 +1,16 @@
 import "./FormPage.scss";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import errorIcon from "../../assets/icons/error.svg";
- 
+
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const FormPage = ({ userId }) => {
-
+  const {kpiId} = useParams()
   const defaultValues = {
     value: "",
-    kpi_id: "",
+    kpi_id: kpiId || "",
     created_by: userId,
     observation: "",
   };
@@ -24,24 +24,27 @@ const FormPage = ({ userId }) => {
     if (!userId) {
       navigate("/login");
     }
-
     axios
       .get(`${SERVER_URL}/kpis/${userId}`)
       .then((res) => {
         if (res.data.length === 0) {
           setError("Please create KPIs before entering data");
         }
+        res.data.sort((a,b) => (a.id === Number(kpiId) ? -1 :  b.id === Number(kpiId) ? 1 : 0))
         setKpis(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [userId, navigate]);
+  }, [userId, navigate, kpiId]);
+
+
   const handleChange = (e) => {
     const newValues = { ...values };
     newValues[e.target.name] = e.target.value;
     setValues(newValues);
   };
+
   const handleSubmit = () => {
     axios
       .post(`${SERVER_URL}/kpis/entries`, values)
@@ -55,6 +58,7 @@ const FormPage = ({ userId }) => {
       });
   };
 
+
   return (
     <div className="entry-container">
       <form className="entry">
@@ -67,7 +71,7 @@ const FormPage = ({ userId }) => {
             name="kpi_id"
             id="kpi"
             onChange={handleChange}>
-            <option value="">Please select</option>
+            { !kpiId &&  <option value="">Please select</option>}
             {kpis.map((kpi) => {
               return (
                 <option key={kpi.id} value={kpi.id}>
@@ -96,8 +100,18 @@ const FormPage = ({ userId }) => {
             onChange={handleChange}
           />
         </label>
-        {!!error && <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">KPI and value fields are required.</span></div>}
-        <div onClick={handleSubmit} className="entry__submition ">
+        {!!error && (
+          <div className="invalid">
+            <img
+              className="invalid__img"
+              src={errorIcon}
+              alt="error icon"></img>
+            <span className="invalid__text">
+              KPI and value fields are required.
+            </span>
+          </div>
+        )}
+        <div onClick={handleSubmit} className="entry__submission ">
           Submit
         </div>
       </form>

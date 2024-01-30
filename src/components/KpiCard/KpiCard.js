@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import RequestItemList from "../RequestItemList/RequestItemList";
 
@@ -38,15 +39,17 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
       });
   }, [id]);
 
+  //if there is no data for the KPI
   if (entries.length === 0) {
     return (
       <article className="kpi-card">
         <h3 className="kpi-card__title">{`${title} (${unit})`} </h3>
-        <div className="kpi-card__no-entries">No Entries</div>
+        <Link  class="kpi-card__add-data" to={`/form/${id}`}> ADD DATA</Link>
       </article>
     );
   }
 
+//filter the data labels  
   const filteredLabels = entries.map((entry) => {
     return new Date(entry["created_at"]).toLocaleDateString("en-us", {
       month: "short",

@@ -23,10 +23,24 @@
     height: 13.5rem;
     margin:auto;
   }
-  &__no-entries{
-    @include flex-justify(center);
-    align-items: center;
-    height: 15rem;
+  &__add-data{
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin:auto;
+    margin-block:5rem;
+    padding-block: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: $primary-text-color;
+    border-radius: 20px;
+    border: 2px solid $primary-text-color;
 
+    &:hover {
+      background-color: $primary-text-color;
+      color: #fff;
+      text-decoration: none;
+    }
   }
+
 }
