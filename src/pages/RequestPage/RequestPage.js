@@ -6,69 +6,79 @@ import Filters from "../../components/Filters/Filters.js";
 import RequestForm from "../../components/RequestForm/RequestForm.js";
 import plusIcon from "../../assets/icons/plusIcon.png";
 
-
-
-const RequestPage = ({userId}) => {
-  const {kpiId} = useParams();
+const RequestPage = ({ userId }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-        if (!userId) {
-            navigate('/login')
-        }
-    },[userId,navigate]
+    if (!userId) {
+      navigate("/login");
+    }
+  }, [userId, navigate]);
 
-    )
- 
-  const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:""}
-
+  const { kpiId } = useParams();
+  const defaultValues = {
+    sort: "date",
+    filterStatus: ["Open", "Closed", "Resolved", "Pending"],
+    filterAssign: "",
+  };
+  const [searchTerm,setSearchTerm] = useState("")
   const [showForm, setShowForm] = useState(!!kpiId);
-  const [checkedValues, setCheckedValues]= useState(defaultValues); 
+  const [checkedValues, setCheckedValues] = useState(defaultValues);
   const [selectedStatus, setSelectedStatus] = useState([]);
+
+  //Handling sorting and filtering
 
   const handleShowForm = () => {
     const changeshowForm = !showForm;
     setShowForm(changeshowForm);
   };
-  const handleSort = (e) =>{
-    const newcheckedValues = { ...checkedValues};
+
+  const handleSort = (e) => {
+    const newcheckedValues = { ...checkedValues };
     newcheckedValues.sort = e.target.value;
     setCheckedValues(newcheckedValues);
-  } 
-  const handleFilterStatus = (e) =>{
-    let newSelectedStatus =[];
-    let newcheckedValues ={ ...checkedValues};
+  };
 
-    if (selectedStatus.includes(e.target.value) && selectedStatus.length === 1 ){
-      newSelectedStatus=[...defaultValues.filterStatus]
+  const handleFilterStatus = (e) => {
+    let newSelectedStatus = [];
+    let newcheckedValues = { ...checkedValues };
+
+    if (
+      selectedStatus.includes(e.target.value) &&
+      selectedStatus.length === 1
+    ) {
+      newSelectedStatus = [...defaultValues.filterStatus];
       newcheckedValues.filterStatus = newSelectedStatus;
       setSelectedStatus([]);
-    }else if (selectedStatus.includes(e.target.value)){
+    } else if (selectedStatus.includes(e.target.value)) {
       newSelectedStatus = [...selectedStatus];
-      newSelectedStatus.splice(selectedStatus.indexOf(e.target.value),1);
+      newSelectedStatus.splice(selectedStatus.indexOf(e.target.value), 1);
       newcheckedValues.filterStatus = newSelectedStatus;
       setSelectedStatus(newSelectedStatus);
-    }else{
+    } else {
       newSelectedStatus = [...selectedStatus, e.target.value];
       newcheckedValues.filterStatus = newSelectedStatus;
       setSelectedStatus(newSelectedStatus);
     }
-    
-      setCheckedValues(newcheckedValues);
-  } 
-  const handleFilterAssign = (e) =>{
-    const newcheckedValues = { ...checkedValues};
-    newcheckedValues.filterAssign = e.target.value ;
+
     setCheckedValues(newcheckedValues);
-  } 
+  };
+
+  const handleFilterAssign = (e) => {
+    const newcheckedValues = { ...checkedValues };
+    newcheckedValues.filterAssign = e.target.value;
+    setCheckedValues(newcheckedValues);
+  };
+
   return (
     <main className="main">
       <div className="main-content">
-        <div className= "main-content__side-bar">
-          <Filters 
-          handleSort = {handleSort}
-          handleFilterStatus = {handleFilterStatus}
-          handleFilterAssign = {handleFilterAssign}/>
+        <div className="main-content__side-bar">
+          <Filters
+            handleSort={handleSort}
+            handleFilterStatus={handleFilterStatus}
+            handleFilterAssign={handleFilterAssign}
+          />
           <img
             onClick={handleShowForm}
             className="main-content__plus"
@@ -76,13 +86,23 @@ const RequestPage = ({userId}) => {
             alt="add request"
           />
         </div>
-        <div className= "main-content__cards">
-          <div className= {"main-content__form-wrapper" + (showForm || "--hidden") }>
+        <section className="main-content__cards">
+          <div className="main-content__search-wrap">
+            <input className="main-content__search-input"></input>
+
+          </div>
+          <div
+            className={"main-content__form-wrapper" + (showForm || "--hidden")}>
             <RequestForm userId={userId} handleShowForm={handleShowForm} />
           </div>
-          <RequestList showForm={showForm} userId={userId} checkedValues={checkedValues}/>
+          <RequestList
+            showForm={showForm}
+            userId={userId}
+            checkedValues={checkedValues}
+            searchTerm = {searchTerm}
+          />
           {/* only passed showForm to force re-render  */}
-        </div>
+        </section>
       </div>
     </main>
   );

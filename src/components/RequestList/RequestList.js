@@ -6,7 +6,7 @@ import "./RequestList.scss";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-const RequestList = ({ userId, checkedValues, showForm }) => {
+const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [requests, setRequests] = useState([]);
@@ -81,6 +81,7 @@ const RequestList = ({ userId, checkedValues, showForm }) => {
               created_by={request.created_by}
               assigned_to={request.assigned_to}
               date={new Date(request.created_at).toDateString()}
+              term={searchTerm}
             />
           );
         })

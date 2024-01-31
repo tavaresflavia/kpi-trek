@@ -1,26 +1,25 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
-.signup-page{
-    @include flex-justify(space-between);
-    flex-direction: column;
-    align-items: center;
-   padding:1rem;
+.signup-page {
+  @include flex-justify(space-between);
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
-.logo{
-    width:100%;
-    max-width: 25rem;
+.logo {
+  width: 100%;
+  max-width: 25rem;
 }
 .signup {
-    margin-block:2rem;
+  margin-block: 2rem;
   border-radius: 0.625rem;
   padding: $mobile-margin;
   width: 100%;
   box-shadow: 0 0 20px 8px #d0d0d0;
   height: 43rem;
-  
+
   max-width: 30rem;
 
   @include tablet {
@@ -46,18 +45,8 @@
   }
 
   &__input {
-    @include body-font;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
     margin-top: 0.25rem;
-
-    background-color: rgba(219, 220, 216, 0.161);
-    border: 2px solid #afafaf;
-    outline: none;
-    &:focus {
-      border: 2px solid $primary-text-color;
-    }
-
+    @include input;
     &--invalid {
       border: 2px solid $invalid-color;
       &:focus {
@@ -76,7 +65,7 @@
     display: block;
     text-align: center;
     width: 100%;
-    margin-block:2rem;
+    margin-block: 2rem;
     padding-block: 0.5rem;
     text-decoration: none;
     font-weight: 600;
@@ -98,38 +87,34 @@
   &__google-btn {
     @include flex-justify(center);
     align-items: center;
-    gap:1rem;
+    gap: 1rem;
     width: 100%;
-    margin-top:2rem;
+    margin-top: 2rem;
     padding-block: 0.5rem;
     text-decoration: none;
     font-weight: 600;
     color: $primary-text-color;
     border-radius: 20px;
     border: 2px solid $primary-text-color;
-    
   }
 
   &__google {
     width: 1.5rem;
-    
   }
 
-  &__sign-up{
+  &__sign-up {
     display: block;
-    width:100%;
-    text-align: center  ;
-    padding-top:2rem;
+    width: 100%;
+    text-align: center;
+    padding-top: 2rem;
     font-weight: 600;
     color: $primary-text-color;
-
-  }  
+  }
 
   &__message {
-    color:$invalid-color;
+    color: $invalid-color;
     font-weight: 600;
     text-align: center;
-    margin-top:0.5rem;
-
+    margin-top: 0.5rem;
   }
 }

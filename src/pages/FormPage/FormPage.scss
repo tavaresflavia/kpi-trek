@@ -3,7 +3,7 @@
 
 .entry-container {
   @include flex-justify(center);
-  padding-inline:$mobile-margin;
+  padding-inline: $mobile-margin;
 }
 .entry {
   margin-block: 2rem;
@@ -37,22 +37,12 @@
   }
 
   &__input {
-    @include body-font;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
     margin-top: 0.25rem;
-
-    background-color: rgba(219, 220, 216, 0.161);
-    border: 2px solid #afafaf;
-    outline: none;
-    &:focus {
-      border: 2px solid $primary-text-color;
-    }
+    @include input; 
     &--textarea {
       font-family: "Avenir";
     }
   }
-
 
   &__submission {
     cursor: pointer;

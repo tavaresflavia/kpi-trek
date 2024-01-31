@@ -38,4 +38,16 @@
   }
 }
 
+@mixin input{
+  @include body-font;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: rgba(219, 220, 216, 0.161);
+  border: 2px solid #afafaf;
+  outline: none;
+  &:focus {
+    border: 2px solid $primary-text-color;
+  }
+}
+
 

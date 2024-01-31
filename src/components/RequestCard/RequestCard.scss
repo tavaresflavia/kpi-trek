@@ -117,24 +117,17 @@
     margin: $tablet-desktop-margin 0;
   }
   &__input {
-    @include body-font;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
+    @include input;
     margin-top: 0.25rem;
     resize: none;
     height: 7rem;
     font-family: "Avenir";
-    background-color: rgba(219, 220, 216, 0.161);
-    border: 2px solid #afafaf;
-    outline: none;
     min-width: 70%;
     @include tablet {
       min-width: 80%;
     }
 
-    &:focus {
-      border: 2px solid $primary-text-color;
-    }
+    
     &--invalid {
       border: 2px solid $invalid-color;
       &:focus {
