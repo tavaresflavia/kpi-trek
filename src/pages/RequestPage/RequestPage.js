@@ -1,6 +1,6 @@
 import "./RequestPage.scss";
-import { useState,useEffect } from "react";
-import { useNavigate,} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import RequestList from "../../components/RequestList/RequestList.js";
 import Filters from "../../components/Filters/Filters.js";
 import RequestForm from "../../components/RequestForm/RequestForm.js";
@@ -9,7 +9,7 @@ import plusIcon from "../../assets/icons/plusIcon.png";
 
 
 const RequestPage = ({userId}) => {
-
+  const {kpiId} = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const RequestPage = ({userId}) => {
  
   const defaultValues = {sort:"date", filterStatus:["Open","Closed","Resolved","Pending"], filterAssign:""}
 
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(!!kpiId);
   const [checkedValues, setCheckedValues]= useState(defaultValues); 
   const [selectedStatus, setSelectedStatus] = useState([]);
 

@@ -15,14 +15,20 @@
   }
 
   &__side-bar {
+    display: flex;
+    align-items: center;
+    padding-left: $mobile-margin;
     @include tablet {
-      padding-left: $mobile-margin;
+      display: block;
+
     }
   }
   &__plus {
     width: 2rem;
+    height: 2rem;
     @include tablet {
       width: 2.5rem;
+      height: 2.5rem;
     }
   }
   &__form-wrapper {

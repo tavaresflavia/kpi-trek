@@ -3,7 +3,6 @@
 
 .request-card {
   font-size: 0.75rem;
-  width: calc(100vw - 3rem);
   background-image: linear-gradient(to bottom right, #fff, #fbe8a646);
   padding: $mobile-margin;
   box-shadow: 0 0 20px 8px #d0d0d0;
@@ -28,6 +27,11 @@
 
   &--low-risk {
     background-image: linear-gradient(to bottom right, #fff, #9eebd736);
+  }
+
+  &--closed{
+  background-image: linear-gradient(to bottom right, #fff, #a399af46);
+
   }
 
   &__title {

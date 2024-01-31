@@ -89,8 +89,7 @@ const RequestCard = ({
 
   return (
     <div
-      className={`request-card  ${301 > rpn ? "request-card--low-risk" : ""}
-    ${rpn >= 601 ? "request-card--high-risk" : ""}`}>
+      className={`request-card  ${requestStatus==="Closed" ? "request-card--closed" : 301 > rpn ? "request-card--low-risk" : rpn >= 601 ? "request-card--high-risk" : ""}`}>
       <div className="request-card__header">
         <div className="request-card__title">
           <h3 className="request-card__request">{title}</h3>

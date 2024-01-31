@@ -44,12 +44,16 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
     return (
       <article className="kpi-card">
         <h3 className="kpi-card__title">{`${title} (${unit})`} </h3>
-        <Link  class="kpi-card__add-data" to={`/form/${id}`}> ADD DATA</Link>
+        <div class="kpi-card__add-wrap">
+          <Link class="kpi-card__add-data" to={`/form/${id}`}>
+            ADD DATA
+          </Link>
+        </div>
       </article>
     );
   }
 
-//filter the data labels  
+  //filter the data labels
   const filteredLabels = entries.map((entry) => {
     return new Date(entry["created_at"]).toLocaleDateString("en-us", {
       month: "short",
@@ -135,6 +139,11 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
           <Line data={data} options={options}></Line>
         </div>
         <RequestItemList kpiId={id} />
+        <div class="kpi-card__add-wrap">
+          <Link class="kpi-card__add-request" to={`/request/add/${id}`}>
+            ADD REQUEST
+          </Link>
+        </div>
       </div>
 
       <div className="kpi__card-back"></div>

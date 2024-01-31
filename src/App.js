@@ -72,6 +72,7 @@ function App() {
           <Route path="/kpi" element = {<KpiPage userId={user.id}/>} />
           <Route path="/request" element = {<RequestPage userId={user.id}/>}/>
           <Route path="/request/:requestId" element = {<RequestPage userId={user.id}/>}/>
+          <Route path="/request/add/:kpiId" element = {<RequestPage userId={user.id}/>}/>
           <Route path="/form" element = {<FormPage userId={user.id}/>} />
           <Route path="/form/:kpiId" element = {<FormPage userId={user.id}/>} />
           <Route path="*" element = {<NotFound/>} />

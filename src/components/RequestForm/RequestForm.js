@@ -1,11 +1,13 @@
 import "./RequestForm.scss";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import errorIcon from "../../assets/icons/error.svg";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const RequestForm = ({ userId, handleShowForm }) => {
+  const {kpiId} = useParams()
   const defaultValues = {
     title: "",
     description: "",
@@ -13,7 +15,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
     severity: 1,
     occurrence: 1,
     assignee: "",
-    kpi: "",
+    kpi: kpiId || "",
   };
 
   const [error, setError] = useState("");
@@ -33,6 +35,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
           if (res.data.length === 0) {
             setError("Please create KPIs before sending requests");
           }
+          res.data.sort((a,b)=>(a.id === kpiId ? 1 :  b.id === kpiId? -1 : 0 ))
           setKpis(res.data);
         });
       })
@@ -40,7 +43,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
         console.log(err);
         setError(err.response.message);
       });
-  }, [userId]);
+  }, [userId, kpiId]);
 
   //HANDLE CHANGE
 
@@ -157,7 +160,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
             name="kpi"
             onChange={handleChange}
             value={values.kpi}>
-            <option value="">Please select</option>
+            {!kpiId && <option value="">Please select</option>}
             {kpis.length &&
               kpis.map((kpi) => {
                 return (
