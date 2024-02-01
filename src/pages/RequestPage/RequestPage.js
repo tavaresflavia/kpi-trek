@@ -21,28 +21,34 @@ const RequestPage = ({ userId }) => {
     filterStatus: ["Open", "Closed", "Resolved", "Pending"],
     filterAssign: "",
   };
-  const [searchTerm,setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(!!kpiId);
   const [checkedValues, setCheckedValues] = useState(defaultValues);
   const [selectedStatus, setSelectedStatus] = useState([]);
 
-  //Handling sorting and filtering
+  const handleSearchTerm = (e) => {
+    setTimeout(() => {
+      setSearchTerm(e.target.value);
+    }, 1000);
+  };
 
   const handleShowForm = () => {
     const changeshowForm = !showForm;
     setShowForm(changeshowForm);
   };
 
+  //Handling sorting and filtering
+
   const handleSort = (e) => {
-    const newcheckedValues = { ...checkedValues };
-    newcheckedValues.sort = e.target.value;
-    setCheckedValues(newcheckedValues);
+    const newCheckedValues = { ...checkedValues };
+    newCheckedValues.sort = e.target.value;
+    setCheckedValues(newCheckedValues);
   };
 
   const handleFilterStatus = (e) => {
     let newSelectedStatus = [];
     let newcheckedValues = { ...checkedValues };
-
+    //Frist and second conditions uncheck a checked value
     if (
       selectedStatus.includes(e.target.value) &&
       selectedStatus.length === 1
@@ -55,12 +61,12 @@ const RequestPage = ({ userId }) => {
       newSelectedStatus.splice(selectedStatus.indexOf(e.target.value), 1);
       newcheckedValues.filterStatus = newSelectedStatus;
       setSelectedStatus(newSelectedStatus);
+      //Adds the value as a selected value
     } else {
       newSelectedStatus = [...selectedStatus, e.target.value];
       newcheckedValues.filterStatus = newSelectedStatus;
       setSelectedStatus(newSelectedStatus);
     }
-
     setCheckedValues(newcheckedValues);
   };
 
@@ -88,8 +94,9 @@ const RequestPage = ({ userId }) => {
         </div>
         <section className="main-content__cards">
           <div className="main-content__search-wrap">
-            <input className="main-content__search-input"></input>
-
+            <input
+              className="main-content__search-input"
+              onChange={handleSearchTerm}></input>
           </div>
           <div
             className={"main-content__form-wrapper" + (showForm || "--hidden")}>
@@ -99,7 +106,7 @@ const RequestPage = ({ userId }) => {
             showForm={showForm}
             userId={userId}
             checkedValues={checkedValues}
-            searchTerm = {searchTerm}
+            searchTerm={searchTerm}
           />
           {/* only passed showForm to force re-render  */}
         </section>

@@ -101,7 +101,7 @@ const Filters = ({ handleSort, handleFilterStatus, handleFilterAssign }) => {
                   id={statusEl}
                   onClick={handleFilterStatus}
                 />
-                <label className="filters_status-lbl" htmlFor={statusEl}>
+                <label className="filters__status-lbl" htmlFor={statusEl}>
                   {statusEl}
                 </label>
               </div>

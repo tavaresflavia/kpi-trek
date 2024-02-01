@@ -5,7 +5,7 @@ import SignUp from '../../components/SignUp/SignUp';
 
 
 const LoginPage = ({changeLogin, isLoggedIn}) => {
-    // const {setAuth}= useAuth();
+
     const [showSignUp,setShowSignUp] = useState(false);
     const handleSignUp = ()  => {
         setShowSignUp(true);

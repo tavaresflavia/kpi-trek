@@ -7,7 +7,6 @@ import expandLessIcon from "../../assets/icons/expandLessIcon.png";
 import Comment from "../Comment/Comment";
 import errorIcon from "../../assets/icons/error.svg";
 
-
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const RequestCard = ({
@@ -21,12 +20,41 @@ const RequestCard = ({
   assigned_to,
   date,
   kpi,
+  regex,
 }) => {
   const [expand, setExpand] = useState(false);
   const [comment, setComment] = useState("");
   const [commentList, setCommentList] = useState([]);
   const [requestStatus, setRequestStatus] = useState(request_status);
 
+  const searchHighlight = (text) => {
+    if (regex && text.match(regex)) {
+      let currentText = text;
+      const newText = [];
+      const searchTem = text.match(regex)[0];
+      while (currentText.match(regex)) {
+        const pre = currentText.slice(0, currentText.indexOf(searchTem));
+        const span = (
+          <span className="request-card__highligthed">{searchTem}</span>
+        );
+        currentText = currentText.slice(pre.length + searchTem.length);
+        //check if the array is empty or if the last
+        if (
+          !newText.length ||
+          typeof newText[newText.length - 1] !== "string"
+        ) {
+          newText.push(pre);
+        } else {
+          newText[newText.length - 1] = newText[newText.length - 1] + pre;
+        }
+        newText.push(span);
+        console.log(newText);
+      }
+      newText.push(currentText);
+      return newText;
+    }
+    return text;
+  };
 
   useEffect(() => {
     axios
@@ -37,7 +65,7 @@ const RequestCard = ({
       .catch((err) => {
         console.log(err);
       });
-  }, [id,comment]);
+  }, [id, comment]);
 
   const handleChangeComment = (e) => {
     setComment(e.target.value);
@@ -72,7 +100,7 @@ const RequestCard = ({
       });
   };
 
-  const handleCommentSubmit = () => { 
+  const handleCommentSubmit = () => {
     axios
       .post(`${SERVER_URL}/comments`, {
         content: comment,
@@ -89,10 +117,18 @@ const RequestCard = ({
 
   return (
     <div
-      className={`request-card  ${requestStatus==="Closed" ? "request-card--closed" : 301 > rpn ? "request-card--low-risk" : rpn >= 601 ? "request-card--high-risk" : ""}`}>
+      className={`request-card  ${
+        requestStatus === "Closed"
+          ? "request-card--closed"
+          : 301 > rpn
+          ? "request-card--low-risk"
+          : rpn >= 601
+          ? "request-card--high-risk"
+          : ""
+      }`}>
       <div className="request-card__header">
         <div className="request-card__title">
-          <h3 className="request-card__request">{title}</h3>
+          <h3 className="request-card__request">{searchHighlight(title)}</h3>
           <div className="request-card__subtitle">
             <p className="request-card__date">{date}</p>
             <p className="request-card__rpn">
@@ -123,7 +159,9 @@ const RequestCard = ({
           </option>
         </select>
       </div>
-      <p className="request-card__description">{description}</p>
+      <p className="request-card__description">
+        {searchHighlight(description)}
+      </p>
       <div className="request-card__assignment">
         <p className="request-card__created-by">
           Created by <span className="request-card__value"> {created_by} </span>
@@ -165,7 +203,19 @@ const RequestCard = ({
           </button>
         </div>
 
-        {comment && comment.length < 5 ? <div className="invalid"><img className="invalid__img" src={errorIcon} alt="error icon"></img><span className="invalid__text">Please enter at least 5 characters.</span></div> : ""}
+        {comment && comment.length < 5 ? (
+          <div className="invalid">
+            <img
+              className="invalid__img"
+              src={errorIcon}
+              alt="error icon"></img>
+            <span className="invalid__text">
+              Please enter at least 5 characters.
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
         {!commentList.length && <div>Add the first comment.</div>}
 
         {!!commentList.length &&

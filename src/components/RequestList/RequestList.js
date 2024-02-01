@@ -64,31 +64,45 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
     return <p>{error}</p>;
   }
 
+  const regex = new RegExp(`(${searchTerm.replace(" ", "\\s")})`, 'gi');
+  console.log(regex)
   return (
-    <div className="request-list">
+    <section className="request-list">
       {requests.length ? (
         requests.map((request) => {
+          const {id,
+            title,
+            description,
+            rpn,
+            request_status,
+            kpi_title,
+            created_by,
+            assigned_to,
+            created_at} = request
+
+          if (!searchTerm || (description.match(regex) || title.match(regex))){
           return (
             <RequestCard
               userId={userId}
-              key={request.id}
-              id={request.id}
-              title={request.title}
-              description={request.description}
-              rpn={request.rpn}
-              request_status={request.request_status}
-              kpi={request.kpi_title}
-              created_by={request.created_by}
-              assigned_to={request.assigned_to}
-              date={new Date(request.created_at).toDateString()}
-              term={searchTerm}
+              key={id}
+              id={id}
+              title={title}
+              description={description}
+              rpn={rpn}
+              request_status={request_status}
+              kpi={kpi_title}
+              created_by={created_by}
+              assigned_to={assigned_to}
+              date={new Date(created_at).toDateString()}
+              regex={searchTerm? regex: ""}
             />
-          );
+          );}
+          return ""
         })
       ) : (
         <p>No requests found</p>
       )}
-    </div>
+    </section>
   );
 };
 

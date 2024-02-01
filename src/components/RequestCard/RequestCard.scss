@@ -50,6 +50,11 @@
       margin: $tablet-desktop-margin 0;
     }
   }
+  &__highligthed{
+    background-color: #7fd3e3;
+    color:#fff;
+    font-weight: 600;
+  }
 
   &__rpn{
     margin-block:0.5rem;
@@ -76,12 +81,9 @@
     }
   }
 
-  &____status-option {
+  &__status-option {
     font-weight: 600;
     background-color: #ffffff97;
-    &:focus {
-      background-color: red;
-    }
   }
 
   &__assignment {

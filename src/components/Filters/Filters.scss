@@ -1,59 +1,28 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.tag-bar{
+.tag-bar {
+  height: 3.125rem;
+  margin: $mobile-margin $mobile-margin 0 0;
 
-    height: 3.125rem;
-    margin: $mobile-margin $mobile-margin 0 0;
-  
-    &__icon{
-
-      height: 2rem;
-        &--arrow{
-            height:1.5rem;
-
-        }
-
-
-      @include tablet{
-        height: 2.5rem;
-        &--arrow{
-            height:2rem;
-
-        }
-
-      }
-        
+  &__icon {
+    height: 2rem;
+    &--arrow {
+      height: 1.5rem;
     }
 
-
-    // &__tag {
-    //     margin: $mobile-margin;
-    //     @include body-font;
-    //     color: $primary-text-color;
-    //     height: 2.2rem;
-    //     outline: none;
-    //     font-family: "Avenir";
-    //     font-weight: 600;
-    //     background-color: #ffffff97;
-    //     padding: 0.5rem;
-    //     border-radius: 0.25rem;
-    //     border: 2px solid #303c6c6b;
-    //     display: inline-flex;
-    //     align-items: center;
-    
-    //     &--activated {
-    //       background-color: #fff;
-    //       border: 2px solid $primary-text-color;
-    //     }
-    //   }
-
+    @include tablet {
+      height: 2.5rem;
+      &--arrow {
+        height: 2rem;
+      }
+    }
+  }
 }
 
 .filters {
-  
   margin-top: $tablet-desktop-margin;
-  
+
   width: 100%;
   @include tablet {
     width: 12rem;
@@ -67,7 +36,6 @@
 
   &__title {
     margin-left: 0.5rem;
-    
   }
 
   &__sorting {
@@ -90,5 +58,8 @@
     @include tablet {
       flex-wrap: wrap;
     }
+  }
+  &__status-lbl {
+    padding-left: 0.25rem;
   }
 }
