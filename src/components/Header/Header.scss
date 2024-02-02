@@ -2,60 +2,111 @@
 @use "../../styles/partials/mixins" as *;
 
 .nav {
-  @include flex-justify(center);
-  flex-direction: column;
-  max-width: 25rem;
-  margin: 0 auto;
+  @include flex-justify(space-between);
+  position: fixed;
+  width: 100%;
   align-items: center;
-
+  background-color: #ffffffe0;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  border-radius: 0.625rem;
+  z-index: 2;
   @include tablet {
-    font-size: 1.5rem;
-    max-width: 62.5rem;
-    flex-direction: row;
+    font-weight: 600;
     align-items: center;
   }
   @include desktop {
-    width: $desktop-width;
+    padding-inline: 10%;
+  }
+
+  &__logo {
+    width: 10rem;
+    @include tablet {
+      width: 15rem;
+    }
   }
 
   &__link {
     color: $primary-text-color;
     text-decoration: none;
-    margin: $mobile-margin;
-    text-align: left;
+    margin-block: 0.5rem;
+    @include tablet {
+      margin: $mobile-margin;
+      text-align: left;
+    }
+
+    &--logout {
+      cursor: pointer;
+      @include tablet {
+        margin-right: 2rem;
+      }
+    }
     @include desktop {
       margin: $tablet-desktop-margin;
     }
   }
 
-  &__logo-wrap {
-    text-decoration: none;
-    order: -1;
-    max-width: 100%;
+  &__list {
+    display: none;
     @include tablet {
-      order: 0;
-      width: 40%;
+      display: flex;
     }
   }
+}
 
-  &__logo {
-    width:100%;
-
+.burger {
+  margin-right: $mobile-margin;
+  @include tablet {
+    display: none;
   }
-
-  &__logout {
-    @include body-font;
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-
-    border: 1px solid $primary-text-color;
-    border-radius: 1.25rem;
-    margin-top: $mobile-margin;
-    @include tablet {
-      margin-top: 0;
-      font-weight: 600;
-      padding: 0.5rem $mobile-margin;
+  &__bar {
+    width: 2rem;
+    height: 0.25em;
+    background-color: $primary-text-color;
+    border-radius: 0.25rem;
+    margin-top: 0.25rem;
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    &--clicked {
+      width: 2rem;
+      height: 0.25em;
+      background-color: $primary-text-color;
+      border-radius: 0.5em;
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        transform-origin: left;
+        transition: ease-out 0.5s;
+      }
+      &:nth-child(2) {
+        transform: scale(0);
+        transition: ease-out 0.5s;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg) translateX(-0.35rem);
+        transition: ease-out 0.5s;
+      }
     }
+  }
+}
+
+.menu {
+  display: none;
+  &--visible {
+    padding:0.5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 0;
+    flex-direction: column;
+    z-index: 2;
+    border-bottom-left-radius: 0.5rem;
+    margin: 2rem auto;
+    background-color: #ffffffe0;
+    box-shadow: 0 6px 10px #d0d0d0;
+
+    border-bottom-width: 0.625rem;
+  }
+  @include tablet{
+    display: flex;
   }
 }
 

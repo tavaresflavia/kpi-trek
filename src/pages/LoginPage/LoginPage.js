@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Login from '../../components/Login/Login';
 import SignUp from '../../components/SignUp/SignUp';
-// import useAuth from '../../hooks/useAuth';
 
 
 const LoginPage = ({changeLogin, isLoggedIn}) => {
@@ -12,10 +11,10 @@ const LoginPage = ({changeLogin, isLoggedIn}) => {
 
     }
     return (
-        <div>
+        <main>
           {!showSignUp && <Login   changeLogin= {changeLogin} handleSignUp ={handleSignUp}/>}
           {showSignUp  && <SignUp/>}
-        </div>
+        </main>
     );
 };
 

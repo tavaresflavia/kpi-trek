@@ -60,7 +60,7 @@ const FormPage = ({ userId }) => {
 
 
   return (
-    <div className="entry-container">
+    <main className="entry-container">
       <form className="entry">
         <h3 className="entry__title">KPI Entry</h3>
         <label className="entry__label">
@@ -115,7 +115,7 @@ const FormPage = ({ userId }) => {
           Submit
         </div>
       </form>
-    </div>
+    </main>
   );
 };
 

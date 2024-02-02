@@ -2,9 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .request {
-  width: calc(100vw - 3rem);
   font-size: 0.875rem;
-  margin: $mobile-margin;
+  margin-block: $mobile-margin;
   padding: $mobile-margin;
   display: flex;
   flex-direction: column;

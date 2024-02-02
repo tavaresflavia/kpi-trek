@@ -58,7 +58,7 @@ const Login = ({ changeLogin, handleSignUp }) => {
   };
 
   return (
-    <div className="login-page">
+    <main className="login-page">
       <div className="login">
         <h3 className="login__title">Log in</h3>
         <label className="login__label">
@@ -122,7 +122,7 @@ const Login = ({ changeLogin, handleSignUp }) => {
           Sign up
         </Link>
       </div>
-    </div>
+    </main>
   );
 };
 

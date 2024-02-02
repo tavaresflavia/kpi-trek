@@ -2,9 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .home-page {
-  padding: $mobile-margin;
+  padding-inline: $mobile-margin;
   @include tablet {
-    padding: $tablet-desktop-margin;
+    padding-inline: $tablet-desktop-margin;
   }
   @include desktop {
     width: $desktop-width;

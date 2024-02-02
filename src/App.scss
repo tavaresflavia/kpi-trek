@@ -14,25 +14,23 @@ body {
   font-family: "Avenir";
 }
 
-.invalid{
- 
-  display: flex;
-  align-items:flex-start;
-  margin-block:0.5rem;
- 
+main {
+    padding-top: 5rem;
+}
 
-  &__img{
+.invalid {
+  display: flex;
+  align-items: flex-start;
+  margin-block: 0.5rem;
+
+  &__img {
     height: 1.125rem;
     margin-right: 0.25rem;
   }
 
-  &__text{
+  &__text {
     margin-top: 0.05rem;
     color: $invalid-color;
     font-weight: 600;
-
   }
 }
-
-
-

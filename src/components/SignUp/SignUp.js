@@ -106,9 +106,7 @@ const Login = () => {
   };
 
   return (
-    <div className="signup-page">
-
-
+    <main className="signup-page">
       <div className="signup">
         <h3 className="signup__title">Sign up</h3>
         <label className="signup__label">
@@ -203,7 +201,7 @@ const Login = () => {
           Sign up with Google
         </a>
       </div>
-    </div>
+    </main>
   );
 };
 

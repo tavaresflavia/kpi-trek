@@ -15,9 +15,9 @@ const KpiPage = ({userId}) => {
 
     )
     return (
-        <div className="kpi-page">
+        <main className="kpi-page">
             <KpiList userId={userId}/>
-        </div>
+        </main>
     );
 };
 
