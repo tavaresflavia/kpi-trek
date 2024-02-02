@@ -130,6 +130,7 @@
   }
   &__title {
     @extend .hero__title;
+    margin-top:$mobile-margin;
   }
   &__description {
     @extend .hero__text;
@@ -158,6 +159,10 @@
       gap: 0;
     }
   }
+
+  &__req-form-right{
+    margin-left: $mobile-margin;
+  }
   &__req-form-left {
     display: none;
     @include desktop {
@@ -185,19 +190,19 @@
   }
 
   &__req-form {
-    width: 80%;
+    width:calc(100% - 2rem)
   }
 
   &__rectangles {
+    right: 0.75rem;
     z-index: 1;
     position: relative;
-    bottom: 295px;
-    right: 55px;
-    height: 130px;
-    width: 350px;
+    bottom: 18.3rem;
+    height: 8.125rem;
     stroke-dasharray: 700;
     animation: 3s 1s fillRec linear;
     animation-iteration-count: infinite;
+ 
   }
 }
 @keyframes fillArrow {
