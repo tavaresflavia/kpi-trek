@@ -93,7 +93,7 @@ const Login = ({ changeLogin, handleSignUp }) => {
             className="login__submission "
             onClick={() => {
               setEmail("user@test.com");
-              setPassword("user123");
+              setPassword("user123")
             }}>
             Login with test user
           </div>
@@ -109,7 +109,7 @@ const Login = ({ changeLogin, handleSignUp }) => {
         </div>
         {error && (
           <div className="login__message">
-            Log in failed.{" "}
+            Log in failed.
             {error.response.data ? error.response.data : " Please, try later. "}
           </div>
         )}

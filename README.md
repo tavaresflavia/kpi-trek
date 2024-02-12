@@ -32,11 +32,11 @@ $ npm install
 
 Rename .env_sample to .env and replace the placeholder value. Note that it has to be the same port used on the back end .env file.  
 
-REACT_APP_API_URL=http://Set up the frontendlocalhost:<PORT>  
+REACT_APP_API_URL=Set up the frontend localhost:<PORT>  
 
 3. Start the React app:  
 ```
 $ npm start
 ```
 
-4. 10. [Click here](https://github.com/tavaresflavia/kpi-trek-api) to set up the frontend.
+4. 10. [Click here](https://github.com/tavaresflavia/kpi-trek-api) to set up the backend.

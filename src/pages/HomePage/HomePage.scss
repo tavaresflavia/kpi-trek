@@ -162,6 +162,9 @@
 
   &__req-form-right{
     margin-left: $mobile-margin;
+    @include tablet{
+      margin-left: 0;
+    }
   }
   &__req-form-left {
     display: none;
