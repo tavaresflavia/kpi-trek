@@ -89,15 +89,15 @@ const Login = ({ changeLogin, handleSignUp }) => {
           />
         </label>
         <div className="login__submission-wrap">
-          <div
+          <button
             className="login__submission "
             onClick={() => {
               setEmail("user@test.com");
               setPassword("user123");
             }}>
             Login with test user
-          </div>
-          <div
+          </button>
+          <button
             onClick={handleSubmit}
             href="/"
             className={
@@ -105,11 +105,11 @@ const Login = ({ changeLogin, handleSignUp }) => {
               (isFormValid() ? "" : "login__submission--disabled")
             }>
             Log in
-          </div>
+          </button>
         </div>
         {error && (
           <div className="login__message">
-            Log in failed.{" "}
+            Log in failed.
             {error.response.data ? error.response.data : " Please, try later. "}
           </div>
         )}

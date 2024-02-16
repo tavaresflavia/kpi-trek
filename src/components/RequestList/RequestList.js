@@ -65,7 +65,7 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
   }
 
   const regex = new RegExp(`(${searchTerm.replace(" ", "\\s")})`, 'gi');
-  console.log(regex)
+  
   return (
     <section className="request-list">
       {requests.length ? (

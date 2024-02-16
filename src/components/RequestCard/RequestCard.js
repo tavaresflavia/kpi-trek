@@ -48,7 +48,6 @@ const RequestCard = ({
           newText[newText.length - 1] = newText[newText.length - 1] + pre;
         }
         newText.push(span);
-        console.log(newText);
       }
       newText.push(currentText);
       return newText;
