@@ -75,14 +75,14 @@ const RequestCard = ({
     setExpand(newExpandState);
   };
   const isCommentValid = () => {
-    if (comment && comment.length < 5) {
+    if (comment && comment.trim().length < 5) {
       return false;
     }
     return true;
   };
 
   const isSubmitValid = () => {
-    if (!comment || !isCommentValid()) {
+    if (!comment.trim() || !isCommentValid()) {
       return false;
     }
     return true;
@@ -100,9 +100,13 @@ const RequestCard = ({
   };
 
   const handleCommentSubmit = () => {
+    if (!isSubmitValid()) {
+      return;
+    }
+
     axios
       .post(`${SERVER_URL}/comments`, {
-        content: comment,
+        content: comment.trim(),
         created_by: userId,
         request_id: id,
       })
@@ -193,7 +197,9 @@ const RequestCard = ({
             value={comment}
             onChange={handleChangeComment}></textarea>
           <button
+            type="button"
             onClick={handleCommentSubmit}
+            disabled={!isSubmitValid()}
             className={
               "update__submit " +
               (isSubmitValid() ? "" : "update__submit--disabled")
@@ -202,7 +208,7 @@ const RequestCard = ({
           </button>
         </div>
 
-        {comment && comment.length < 5 ? (
+        {comment && comment.trim().length < 5 ? (
           <div className="invalid">
             <img
               className="invalid__img"

@@ -68,6 +68,11 @@ const KpiForm = ({userId,setReload,reload}) => {
   };
 
   const handleSubmit = () => {
+    if (!isFormValid()) {
+      setFormValidity(false);
+      return;
+    }
+
     const currentLimits = {};
     for (const [key, value] of Object.entries(limits)) {
       if(value){

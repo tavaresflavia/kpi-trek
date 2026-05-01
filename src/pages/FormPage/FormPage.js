@@ -19,6 +19,7 @@ const FormPage = ({ userId }) => {
   const [error, setError] = useState("");
   const [kpis, setKpis] = useState([]);
   const [values, setValues] = useState(defaultValues);
+  const [formValidity, setFormValidity] = useState(true);
 
   useEffect(() => {
     if (!userId) {
@@ -43,9 +44,19 @@ const FormPage = ({ userId }) => {
     const newValues = { ...values };
     newValues[e.target.name] = e.target.value;
     setValues(newValues);
+    setFormValidity(true);
+  };
+
+  const isFormValid = () => {
+    return !!values.kpi_id && values.value !== "";
   };
 
   const handleSubmit = () => {
+    if (!isFormValid()) {
+      setFormValidity(false);
+      return;
+    }
+
     axios
       .post(`${SERVER_URL}/kpis/entries`, values)
       .then((_res) => {
@@ -61,7 +72,7 @@ const FormPage = ({ userId }) => {
 
   return (
     <main className="entry-container">
-      <form className="entry">
+      <form className="entry" onSubmit={(e) => e.preventDefault()}>
         <h3 className="entry__title">KPI Entry</h3>
         <label className="entry__label">
           KPI
@@ -70,6 +81,7 @@ const FormPage = ({ userId }) => {
             type="kpi"
             name="kpi_id"
             id="kpi"
+            value={values.kpi_id}
             onChange={handleChange}>
             { !kpiId &&  <option value="">Please select</option>}
             {kpis.map((kpi) => {
@@ -100,7 +112,7 @@ const FormPage = ({ userId }) => {
             onChange={handleChange}
           />
         </label>
-        {!!error && (
+        {(!formValidity || !!error) && (
           <div className="invalid">
             <img
               className="invalid__img"
@@ -111,7 +123,12 @@ const FormPage = ({ userId }) => {
             </span>
           </div>
         )}
-        <div onClick={handleSubmit} className="entry__submission ">
+        <div
+          onClick={handleSubmit}
+          className={
+            "entry__submission " +
+            (isFormValid() ? "" : "entry__submission--disabled")
+          }>
           Submit
         </div>
       </form>
