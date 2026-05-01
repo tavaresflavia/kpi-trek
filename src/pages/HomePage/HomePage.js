@@ -14,9 +14,11 @@ const HomePage = ({ isLoggedIn }) => {
         <article className="hero__content">
           <h1 className="hero__title">KPI Trek</h1>
           <p className="hero__text">
-            {
-              "KPI Trek is a website designed to revolutionize the way you and your team track and manage Key Performance Indicators (KPIs). This comprehensive platform empowers users to effortlessly enter data, visualize trends, and collaborate seamlessly through ticket-based requests."
-            }{" "}
+            KPI Trek is a website designed to revolutionize the way you and your
+            team track and manage Key Performance Indicators (KPIs). This
+            comprehensive platform empowers users to effortlessly enter data,
+            visualize trends, and collaborate seamlessly through ticket-based
+            requests.
           </p>
           {!isLoggedIn && (
             <Link className="hero__login" to="/login">
@@ -29,11 +31,11 @@ const HomePage = ({ isLoggedIn }) => {
       <section className="how">
         <article className="how__feature">
           <div className="how__content">
-            <h2 className="how__title">Create a new KPI </h2>
+            <h2 className="how__title">Create a new KPI</h2>
             <p className="how__description">
-              Create a new KPI by visiting KPIs page and completing the form
-              with its name and description. Enter the unit used to measure it
-              and if applicable, specify target, upper, and lower control
+              Create a new KPI by visiting the KPIs page and completing the
+              form with its name and description. Enter the unit used to measure
+              it and, if applicable, specify target, upper, and lower control
               limits.
             </p>
           </div>
@@ -43,7 +45,7 @@ const HomePage = ({ isLoggedIn }) => {
           <div className="how__content">
             <h2 className="how__title">Enter data</h2>
             <p className="how__description">
-              Enter the current value of the KPI , and if necessary, provide an
+              Enter the current value of the KPI, and if necessary, provide an
               observation. Navigate to the KPIs page to visualize the data on a
               chart.
             </p>
@@ -54,29 +56,31 @@ const HomePage = ({ isLoggedIn }) => {
         <article className="how__feature">
           <div className="how__content how__content--request">
             <div>
-            <h2 className="how__title">Create a new request</h2>
-            <p className="how__description">
-              {
-                "Assign a request to a team member and provide essential details such as title, description, RPN, and the associated KPI. The Risk Priority Number (RPN) is automatically calculated based on the entered severity, occurrence, and detection scores."
-              }
-               
-            </p>
+              <h2 className="how__title">Create a new request</h2>
+              <p className="how__description">
+                Assign a request to a team member and provide essential details
+                such as title, description, RPN, and the associated KPI. The
+                Risk Priority Number (RPN) is automatically calculated based on
+                the entered severity, occurrence, and detection scores.
+              </p>
             </div>
             <div className="how__rpn">
-            <p>
-              <strong>Severity:</strong> The potential impact or consequences of
-              a risk if it were to occur | 1 (low impact) to 10 (high impact).
-            </p>
-            <p>
-              <strong>Occurrence:</strong>The likelihood or probability of a
-              risk event happening | 1 (low likelihood) to 10 (high likelihood).
-            </p>
-            <p>
-              <strong>Detection:</strong>The ability to identify or catch a risk
-              before it leads to negative consequences | 1 (high detectability)
-              to 10 (low detectability).
-            </p>
-          </div>
+              <p>
+                <strong>Severity:</strong> The potential impact or consequences
+                of a risk if it were to occur | 1 (low impact) to 10 (high
+                impact).
+              </p>
+              <p>
+                <strong>Occurrence:</strong> The likelihood or probability of a
+                risk event happening | 1 (low likelihood) to 10 (high
+                likelihood).
+              </p>
+              <p>
+                <strong>Detection:</strong> The ability to identify or catch a
+                risk before it leads to negative consequences | 1 (high
+                detectability) to 10 (low detectability).
+              </p>
+            </div>
           </div>
           <div className="how__req-form">
             <img
@@ -124,22 +128,18 @@ const HomePage = ({ isLoggedIn }) => {
                     strokeWidth="3"
                   />
                 </svg>
-
               </div>
             </div>
           </div>
-          
         </article>
-       
+
         <article className="how__feature how__feature--comment">
           <div className="how__content">
             <h2 className="how__title">Add a comment and change status</h2>
             <p className="how__description">
               Enhance collaboration and streamline communication by adding
-              comments to requests, eliminating the need for cluttered email
-              threads and providing an efficient way to discuss and track
-              updatesoid cluttered email threads and efficiently discuss and
-              track updates by adding comments to the requests.
+              comments to requests. Avoid cluttered email threads and keep
+              discussions and status updates in one place.
             </p>
           </div>
 
