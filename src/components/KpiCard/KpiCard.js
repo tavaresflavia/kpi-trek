@@ -44,8 +44,8 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
     return (
       <article className="kpi-card">
         <h3 className="kpi-card__title">{`${title} (${unit})`} </h3>
-        <div class="kpi-card__add-wrap">
-          <Link class="kpi-card__add-data" to={`/form/${id}`}>
+        <div className="kpi-card__add-wrap">
+          <Link className="kpi-card__add-data" to={`/form/${id}`}>
             ADD DATA
           </Link>
         </div>
@@ -139,8 +139,8 @@ const KpiCard = ({ id, title, unit, target, lower_limit, upper_limit }) => {
           <Line data={data} options={options}></Line>
         </div>
         <RequestItemList kpiId={id} />
-        <div class="kpi-card__add-wrap">
-          <Link class="kpi-card__add-request" to={`/request/add/${id}`}>
+        <div className="kpi-card__add-wrap">
+          <Link className="kpi-card__add-request" to={`/request/add/${id}`}>
             ADD REQUEST
           </Link>
         </div>
