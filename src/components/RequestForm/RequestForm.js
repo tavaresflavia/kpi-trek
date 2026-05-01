@@ -28,13 +28,17 @@ const RequestForm = ({ userId, handleShowForm }) => {
   const [formValidity, setFormValidity] = useState(true);
 
   useEffect(() => {
+    if (!userId) {
+      return;
+    }
+
     axios
       .get(`${SERVER_URL}/users`)
       .then((res) => {
         setUsers(res.data);
       })
       .then(() => {
-        axios.get(`${SERVER_URL}/kpis/${userId}`).then((res) => {
+        axios.get(`${SERVER_URL}/kpis`).then((res) => {
           if (res.data.length === 0) {
             setError("Please create KPIs before sending requests");
           }

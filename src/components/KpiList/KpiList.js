@@ -13,8 +13,12 @@ const KpiList = ({ userId }) => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
+    if (!userId) {
+      return;
+    }
+
     axios
-      .get(`${SERVER_URL}/kpis/${userId}`)
+      .get(`${SERVER_URL}/kpis`)
       .then((res) => {
         setKpis(res.data);
         setIsLoading(false);
@@ -24,6 +28,10 @@ const KpiList = ({ userId }) => {
         setIsLoading(false);
       });
   }, [userId, reload]);
+
+  if (!userId) {
+    return null;
+  }
 
   if (isLoading) {
     return <p>Loading</p>;

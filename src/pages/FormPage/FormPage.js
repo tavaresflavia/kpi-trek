@@ -24,9 +24,10 @@ const FormPage = ({ userId }) => {
   useEffect(() => {
     if (!userId) {
       navigate("/login");
+      return;
     }
     axios
-      .get(`${SERVER_URL}/kpis/${userId}`)
+      .get(`${SERVER_URL}/kpis`)
       .then((res) => {
         if (res.data.length === 0) {
           setError("Please create KPIs before entering data");
