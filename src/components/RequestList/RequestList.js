@@ -23,6 +23,7 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
           filterStatus.includes(request.request_status)
         );
         setRequests(newRequests);
+        setError("");
         setIsLoading(false);
       })
       .catch((err) => {
@@ -44,6 +45,7 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
             filterStatus.includes(request.request_status)
           );
           setRequests(newRequests);
+          setError("");
           setIsLoading(false);
         })
         .catch((err) => {

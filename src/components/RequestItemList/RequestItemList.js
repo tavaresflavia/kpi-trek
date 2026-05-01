@@ -15,6 +15,7 @@ const RequestItemList = ({ kpiId }) => {
       .get(`${SERVER_URL}/requests/kpi/${kpiId}?limit=3`)
       .then((res) => {
         setRequests(res.data);
+        setError("");
         setIsLoading(false);
       })
       .catch((err) => {
