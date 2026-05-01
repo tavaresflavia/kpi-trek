@@ -4,6 +4,9 @@ import "./RequestItemList.scss";
 import RequestItem from "../RequestItem/RequestItem";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
+const getErrorMessage = (err, fallback) => {
+  return err.response?.data || fallback;
+};
 
 const RequestItemList = ({ kpiId }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,9 +22,11 @@ const RequestItemList = ({ kpiId }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.response.status === 404) {
+        if (err.response?.status === 404) {
           setRequests([]);
-          setError(err.response.message);
+          setError(getErrorMessage(err, "Unable to retrieve requests"));
+        } else {
+          setError(getErrorMessage(err, "Unable to retrieve requests"));
         }
         setIsLoading(false);
       });

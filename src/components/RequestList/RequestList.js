@@ -5,6 +5,9 @@ import RequestCard from "../RequestCard/RequestCard";
 import "./RequestList.scss";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
+const getErrorMessage = (err, fallback) => {
+  return err.response?.data || fallback;
+};
 
 const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,9 +30,11 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.response.status === 404) {
+        if (err.response?.status === 404) {
           setRequests([]);
-          setError(err.response.message);
+          setError(getErrorMessage(err, "Unable to retrieve requests"));
+        } else {
+          setError(getErrorMessage(err, "Unable to retrieve requests"));
         }
         setIsLoading(false);
       });
@@ -49,9 +54,11 @@ const RequestList = ({ userId, checkedValues, showForm, searchTerm }) => {
           setIsLoading(false);
         })
         .catch((err) => {
-          if (err.response.status === 404) {
+          if (err.response?.status === 404) {
             setRequests([]);
-            setError(err.response.message);
+            setError(getErrorMessage(err, "Unable to retrieve requests"));
+          } else {
+            setError(getErrorMessage(err, "Unable to retrieve requests"));
           }
           setIsLoading(false);
         });

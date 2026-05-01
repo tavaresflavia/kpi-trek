@@ -5,6 +5,9 @@ import axios from "axios";
 import errorIcon from "../../assets/icons/error.svg";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
+const getErrorMessage = (err, fallback) => {
+  return err.response?.data || fallback;
+};
 
 const RequestForm = ({ userId, handleShowForm }) => {
   const {kpiId} = useParams()
@@ -41,7 +44,7 @@ const RequestForm = ({ userId, handleShowForm }) => {
       })
       .catch((err) => {
         console.log(err);
-        setError(err.response.message);
+        setError(getErrorMessage(err, "Unable to load request form data."));
       });
   }, [userId, kpiId]);
 
